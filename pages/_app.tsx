@@ -10,6 +10,8 @@ const Contents = styled.div`
   max-width: 1000px;
   width: 90%;
   margin: 0px auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -36,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Main = styled.main`
   padding-bottom: 30px;
-  word-wrap: break-word;
 `;
 
 const App = ({ Component, pageProps }: AppProps) => {
