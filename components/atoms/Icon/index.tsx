@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export default (props: { size: number }) => {
-  const Icon = styled.img`
-    border-radius: ${props.size / 2}px;
-    width: ${props.size}px;
-    height: ${props.size}px;
-  `;
+const Icon = styled.img`
+  border-radius: 30px;
+  width: 60px;
+  height: 60px;
+`;
+
+export default () => {
   return <Icon src="/assets/icon.png" />;
 };
