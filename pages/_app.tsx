@@ -9,30 +9,31 @@ import * as React from "react";
 const Contents = styled.div`
   max-width: 1000px;
   width: 90%;
-  margin: 0px auto;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: "Noto Sans JP"
+    font-family: "Noto Sans JP";
   }
   h1 {
     font-size: 25px;
     padding-top: 17px;
     padding-bottom: 20px;
+    word-wrap: break-word;
   }
   h2 {
     font-size: 20px;
     padding-top: 15px;
     padding-bottom: 18px;
+    word-wrap: break-word;
   }
   p {
     font-size: 16px;
     line-height: 25px;
     margin: 1em 0px;
-    white-space: pre;
+    word-wrap: break-word;
   }
 `;
 
