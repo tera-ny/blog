@@ -26,7 +26,7 @@ $ swift test
 const code2 = `
 // swift-tools-version:5.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
-\m
+\n
 import PackageDescription
 \n
 let package = Package(
@@ -106,7 +106,9 @@ final class PreparableTests: XCTestCase {
 で作成するモジュールのテンプレートを変更できるとのことですが、今回はライブラリなので--type
 を指定しない状態で初期化します swift package init で生成されたプロジェクトの構成をみると、
 
-- Package.swift - Sources - Tests
+- Package.swift
+- Sources
+- Tests
 
 の三つが生成されました。実際に Sources にライブラリのコードを追加していきます。
 
@@ -138,8 +140,7 @@ code linting と build、test を一括で実行するスクリプトを用意�
 
 実際に完成したライブラリをプロジェクトから呼び出してみます
 
-開発しているプロジェクトをひらいた状態で Xcode のステータスバーの File > Swift Package > Add Package Dependencies...から Github 上にあるライブラリのリンクを追加してインポートします。
-https://github.com/g4zeru/Preparable.git
+開発しているプロジェクトをひらいた状態で Xcode のステータスバーの File > Swift Package > Add Package Dependencies...から Github 上にあるライブラリの[リンク](https://github.com/g4zeru/Preparable.git)を追加してインポートします。
 インポートに成功するとプロジェクトで使用することが確認できました。
 
 ## まとめ
