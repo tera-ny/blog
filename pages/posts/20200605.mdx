@@ -1,88 +1,15 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { xcode, atom } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-const code0 = `
-public protocol Preparable: AnyObject {}
-\n
-public extension Preparable {
-  @discardableResult func then(\_ processingBlock: (Self) -> Void) -> Self {
-    processingBlock(self)
-    return self
-  }
-}
-\n
-extension NSObject: Preparable {}
-\n
-UIView()
-  .then {
-    $0.backgroundColor = .white
-  }
-`;
-const code1 = `$ mkdir Preparable
-$ cd Preparable
-$ swift package init # or swift package init --type library
-$ swift build
-$ swift test
-`;
-const code2 = `
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-\n
-import PackageDescription
-\n
-let package = Package(
-    name: "Preparable",
-    products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "Preparable",
-            targets: ["Preparable"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        ///依存するパッケージを追加する。プロジェクトに対する依存なのでテストで使用するパッケージもここに追加する
-        .package(url: https://github.com/ReactiveX/RxSwift.git, from: "5.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "Preparable",
-            ///依存関係を明記する
-            dependencies: ["RxSwift"]),
-        .testTarget(
-            name: "PreparableTests",
-            dependencies: ["Preparable"]),
-    ]
-)
-`;
-const code3 = `
-@testable import Preparable
-import Foundation
-import XCTest
-\n
-class Mock: NSObject {
-    var count: Int
-    init(count: Int) {
-        self.count = count
-        super.init()
-    }
-}
-\n
-final class PreparableTests: XCTestCase {
-    func testPreparableObject() {
-        let mock = Mock(count: 0)
-        XCTAssertEqual(mock.count, 0)
-        mock
-            .then {
-                $0.count = 100
-            }
-        XCTAssertEqual(mock.count, 100)
-    }
-    static var allTests = [
-        ("testPreparableObject", testPreparableObject)
-    ]
-}
-`;
+
+export const meta = {
+  title: "SwiftPM で作る iOS 向け Static library を作ってみた",
+  description:
+    "今までEmbedded frameworkでしかツールを作っていなかった筆者が初めて外部に公開できるライブラリを作ってみました。",
+};
+const code0 = `public protocol Preparable: AnyObject {} \n public extension Preparable { @discardableResult func then(\_ processingBlock: (Self) -> Void) -> Self { processingBlock(self) return self } } \n extension NSObject: Preparable {} \n UIView() .then { $0.backgroundColor = .white }`;
+const code1 = `$ mkdir Preparable $ cd Preparable $ swift package init # or swift package init --type library $ swift build $ swift test`;
+const code2 = `// swift-tools-version:5.2 // The swift-tools-version declares the minimum version of Swift required to build this package. \n import PackageDescription \n let package = Package( name: "Preparable", products: [ // Products define the executables and libraries produced by a package, and make them visible to other packages. .library( name: "Preparable", targets: ["Preparable"]), ], dependencies: [ // Dependencies declare other packages that this package depends on. ///依存するパッケージを追加する。プロジェクトに対する依存なのでテストで使用するパッケージもここに追加する .package(url: https://github.com/ReactiveX/RxSwift.git, from: "5.0.0"), ], targets: [ // Targets are the basic building blocks of a package. A target can define a module or a test suite. // Targets can depend on other targets in this package, and on products in packages which this package depends on. .target( name: "Preparable", ///依存関係を明記する dependencies: ["RxSwift"]), .testTarget( name: "PreparableTests", dependencies: ["Preparable"]), ] )`;
+const code3 = `@testable import Preparable import Foundation import XCTest \n class Mock: NSObject { var count: Int init(count: Int) { self.count = count super.init() } } \n final class PreparableTests: XCTestCase { func testPreparableObject() { let mock = Mock(count: 0) XCTAssertEqual(mock.count, 0) mock .then { $0.count = 100 } XCTAssertEqual(mock.count, 100) } static var allTests = [ ("testPreparableObject", testPreparableObject) ] }`;
 
 # SwiftPM で作る iOS 向け Static library を作ってみた
 
