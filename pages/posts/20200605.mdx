@@ -6,7 +6,13 @@ export const meta = {
   description:
     "今までEmbedded frameworkでしかツールを作っていなかった筆者が初めて外部に公開できるライブラリを作ってみました。",
 };
-const code0 = `public protocol Preparable: AnyObject {}
+
+# SwiftPM で作る iOS 向け Static library を作ってみた
+
+今回はサンプルとして下記のようなインスタンス生成時にプロパティを変更するためのユーティリティツールを追加するライブラリーを作成してみます
+
+<SyntaxHighlighter language="swift" style={xcode}>
+  {`public protocol Preparable: AnyObject {}
 public extension Preparable {
   @discardableResult func then(_ processingBlock: (Self) -> Void) -> Self {
     processingBlock(self) return self
@@ -14,13 +20,40 @@ public extension Preparable {
 }
 extension NSObject: Preparable {}
   UIView() .then { $0.backgroundColor = .white
-}`;
-const code1 = `$ mkdir Preparable
+}`}
+</SyntaxHighlighter>
+
+完成したプロジェクトは[こちら](https://github.com/g4zeru/Preparable)
+
+## 公式のドキュメントからパッケージの初期化の試す
+
+[apple/swift-package-manager](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md#creating-a-package)
+
+<SyntaxHighlighter language="shell" style={atom}>
+  {`$ mkdir Preparable
 $ cd Preparable
 $ swift package init # or swift package init --type library
 $ swift build
-$ swift test`;
-const code2 = `
+$ swift test`}
+</SyntaxHighlighter>
+
+ディレクトリ名（上記のコードだと Preparable）がパッケージ名になるっぽいです。--type
+で作成するモジュールのテンプレートを変更できるとのことですが、今回はライブラリなので--type
+を指定しない状態で初期化します swift package init で生成されたプロジェクトの構成をみると、
+
+- Package.swift
+- Sources
+- Tests
+
+の三つが生成されました。実際に Sources にライブラリのコードを追加していきます。
+
+## 実装していく
+
+自作ライブラリを作る上で外部のライブラリ（例えば RxSwift など）に依存する必要が出てくるかも知れません。その場合は Package.swift に依存関係を記述する必要があります。
+RxSwift を例にあげると
+
+<SyntaxHighlighter language="swift" style={xcode}>
+  {`
 import PackageDescription
 \n
 let package = Package(
@@ -46,8 +79,17 @@ let package = Package(
             dependencies: ["Preparable"]),
     ]
 )
-`;
-const code3 = `
+`}
+</SyntaxHighlighter>
+
+このように依存関係を記述するとプロジェクトで外部ライブラリを使用した開発ができます。
+今回は軽めの実装なのでこれからテストを書いていきますが
+もし大きめのプロジェクトを作るのであれば先にテストを用意して、都度 swift test でテストすると良いと思います。
+
+テストコードは以下のようなものです。呼び出された関数で変更されたプロパティが返り値で返却されたインスタンスで本当に変更されているのかチェックしています
+
+<SyntaxHighlighter language="swift" style={xcode}>
+  {`
 @testable import Preparable
 import XCTest
 \n
@@ -66,53 +108,7 @@ final class PreparableTests: XCTestCase {
         ("testPreparableObject", testPreparableObject)
     ]
 }
-`;
-
-# SwiftPM で作る iOS 向け Static library を作ってみた
-
-今回はサンプルとして下記のようなインスタンス生成時にプロパティを変更するためのユーティリティツールを追加するライブラリーを作成してみます
-
-<SyntaxHighlighter language="swift" style={xcode}>
-  {code0}
-</SyntaxHighlighter>
-
-完成したプロジェクトは[こちら](https://github.com/g4zeru/Preparable)
-
-## 公式のドキュメントからパッケージの初期化の試す
-
-[apple/swift-package-manager](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md#creating-a-package)
-
-<SyntaxHighlighter language="shell" style={atom}>
-  {code1}
-</SyntaxHighlighter>
-
-ディレクトリ名（上記のコードだと Preparable）がパッケージ名になるっぽいです。--type
-で作成するモジュールのテンプレートを変更できるとのことですが、今回はライブラリなので--type
-を指定しない状態で初期化します swift package init で生成されたプロジェクトの構成をみると、
-
-- Package.swift
-- Sources
-- Tests
-
-の三つが生成されました。実際に Sources にライブラリのコードを追加していきます。
-
-## 実装していく
-
-自作ライブラリを作る上で外部のライブラリ（例えば RxSwift など）に依存する必要が出てくるかも知れません。その場合は Package.swift に依存関係を記述する必要があります。
-RxSwift を例にあげると
-
-<SyntaxHighlighter language="swift" style={xcode}>
-  {code2}
-</SyntaxHighlighter>
-
-このように依存関係を記述するとプロジェクトで外部ライブラリを使用した開発ができます。
-今回は軽めの実装なのでこれからテストを書いていきますが
-もし大きめのプロジェクトを作るのであれば先にテストを用意して、都度 swift test でテストすると良いと思います。
-
-テストコードは以下のようなものです。呼び出された関数で変更されたプロパティが返り値で返却されたインスタンスで本当に変更されているのかチェックしています
-
-<SyntaxHighlighter language="swift" style={xcode}>
-  {code3}
+`}
 </SyntaxHighlighter>
 
 基本的には Coverage100%を目指します
