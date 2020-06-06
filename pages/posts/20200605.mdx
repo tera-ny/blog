@@ -6,66 +6,66 @@ export const meta = {
   description:
     "今までEmbedded frameworkでしかツールを作っていなかった筆者が初めて外部に公開できるライブラリを作ってみました。",
 };
-const code0 = `public protocol Preparable: AnyObject {}\n
-public extension Preparable {\n
-  @discardableResult func then(\_ processingBlock: (Self) -> Void) -> Self {\n
-    processingBlock(self) return self\n
-  }\n
-}\n 
-extension NSObject: Preparable {}\n
-  UIView() .then { $0.backgroundColor = .white\n
+const code0 = `public protocol Preparable: AnyObject {}
+public extension Preparable {
+  @discardableResult func then(_ processingBlock: (Self) -> Void) -> Self {
+    processingBlock(self) return self
+  }
+}
+extension NSObject: Preparable {}
+  UIView() .then { $0.backgroundColor = .white
 }`;
-const code1 = `$ mkdir Preparable\n
-$ cd Preparable\n
-$ swift package init # or swift package init --type library\n
-$ swift build\n
+const code1 = `$ mkdir Preparable
+$ cd Preparable
+$ swift package init # or swift package init --type library
+$ swift build
 $ swift test`;
 const code2 = `
-import PackageDescription\n
+import PackageDescription
 \n
-let package = Package(\n
-    name: "Preparable",\n
-    products: [\n
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.\n
-        .library(\n
-            name: "Preparable",\n
-            targets: ["Preparable"]),\n
-    ],\n
-    dependencies: [\n
-        ///依存するパッケージを追加する。プロジェクトに対する依存なのでテストで使用するパッケージもここに追加する\n
-        .package(url: https://github.com/ReactiveX/RxSwift.git, from: "5.0.0"),\n
-    ],\n
-    targets: [\n
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.\n
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.\n
-        .target(\n
-            name: "Preparable",\n
-            dependencies: ["RxSwift"]),\n
-        .testTarget(\n
-            name: "PreparableTests",\n
-            dependencies: ["Preparable"]),\n
-    ]\n
-)\n
+let package = Package(
+    name: "Preparable",
+    products: [
+        // Products define the executables and libraries produced by a package, and make them visible to other packages.
+        .library(
+            name: "Preparable",
+            targets: ["Preparable"]),
+    ],
+    dependencies: [
+        ///依存するパッケージを追加する。プロジェクトに対する依存なのでテストで使用するパッケージもここに追加する
+        .package(url: https://github.com/ReactiveX/RxSwift.git, from: "5.0.0"),
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "Preparable",
+            dependencies: ["RxSwift"]),
+        .testTarget(
+            name: "PreparableTests",
+            dependencies: ["Preparable"]),
+    ]
+)
 `;
 const code3 = `
-@testable import Preparable\n
-import XCTest\n
+@testable import Preparable
+import XCTest
 \n
-final class PreparableTests: XCTestCase {\n
-    func testPreparableObject() {\n
-        let mock = Mock(count: 0)\n
-        XCTAssertEqual(mock.count, 0)\n
-        mock\n
-            .then {\n
-                $0.count = 100\n
-            }\n
-        XCTAssertEqual(mock.count, 100)\n
-    }\n
+final class PreparableTests: XCTestCase {
+    func testPreparableObject() {
+        let mock = Mock(count: 0)
+        XCTAssertEqual(mock.count, 0)
+        mock
+            .then {
+                $0.count = 100
+            }
+        XCTAssertEqual(mock.count, 100)
+    }
 \n
-    static var allTests = [\n
-        ("testPreparableObject", testPreparableObject)\n
-    ]\n
-}\n
+    static var allTests = [
+        ("testPreparableObject", testPreparableObject)
+    ]
+}
 `;
 
 # SwiftPM で作る iOS 向け Static library を作ってみた
