@@ -1,0 +1,204 @@
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { xcode } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
+export const meta = {
+  title: "どうにかiOSで納得の行くFluxパターンを見つけられないか",
+  description:
+    "FluxはもともとReactを使用するWebアプリケーションを想定したアーキテクチャですが、その概念をiOSに持ってこれないか奮闘してみました。",
+};
+const code0 = `
+import Foundation
+\n
+public protocol DispatcherProtocol {
+    associatedtype Action
+    func on(action: Action)
+    func subscribe(callback: @escaping (Action)->Void) -> String
+    func unSubscribe(token: String)
+}
+`;
+
+# どうにか iOS で納得の行く Flux パターンを見つけられないか
+
+Fluxは本来Reactでの使用を想定しているため Swift を使用した iOS アプリケーション開発に導入するには言語の違いや、画面の更新の仕方の違いなどそのまま導入することは非常に難しいです。
+
+そして、わざわざ開発された環境が違うFluxをiOSアプリケーション開発に持ち込むべきなのかという議論も当然生まれてくると思っています。しかしながら Flux の根幹である単方向のデータフローというのは非常に魅力的な Web,iOS に限らず非常に魅力的な仕組みだと思います。
+
+多くの方がFluxのような単方向のデータフローを実現するための方法を公開していただいていますが、今回は実務で使用できるかは別として単方向のデータフローを理解、実現することを目標にミュージックプレイヤーアプリを作成し試行錯誤してみました。
+
+#### 今回作成したプロジェクト
+
+- [Flux アーキテクチャを再現するためのサポートライブラリ](https://github.com/g4zeru/Napoli)
+- [Flux アーキテクチャを利用したプロジェクト](https://github.com/g4zeru/AudioPlayerWithSwiftUI)
+
+#### 参考文献
+
+- [Peaks | iOS アプリ設計パターン入門](https://peaks.cc/books/iOS_architecture)
+- [Facebook | Flux Documents](https://facebook.github.io/flux/)
+
+### 単方向のデータフローを実現するために基盤を作る
+
+以下の要素がFluxで登場する主な登場人物です。
+
+- Action
+- Dispatcher
+- Store
+- View
+
+[こちら](https://github.com/g4zeru/Napoli)のプロジェクトでは Dispatcher のインターフェースを提供し View から Dispatcher を使用することで Flux を再現するように実装してみました。
+
+Dispatcher.swift
+<SyntaxHighlighter language="swift" style={xcode}>
+  {`import Foundation
+\n
+public protocol DispatcherProtocol {
+    associatedtype Action
+    func on(action: Action)
+    func subscribe(callback: @escaping (Action)->Void) -> String
+    func unSubscribe(token: String)
+}`}
+</SyntaxHighlighter>
+
+DispatcherはProtocolで定義し、画面につき1つのDispatcher、もしくはモデルにつき1つのDispatcherが存在することを想定しています。
+ここではDispatcheのインターフェースを提供するのみで実装はそれぞれのDispatcherに準拠したクラスで用意するか、[こちら](https://github.com/g4zeru/Napoli/blob/master/Sources/Napoli/DispatcherStore.swift)で提供しているStoreを所持したDispatcherを拡張したDispatcherStoreを準拠してデータフローを実現します。
+
+DispatcherStore.swift
+<SyntaxHighlighter language="swift" style={xcode}>
+    {`import Foundation
+\n
+public protocol DispatcherStoreProtocol: class, DispatcherProtocol {
+    var store: [String: (Action)->Void] { get set }
+}
+\n
+public extension DispatcherStoreProtocol {
+    func on(action: Action) {
+        store.forEach { (key, value) in
+            value(action)
+        }
+    }
+    func subscribe(callback: @escaping (Action)->Void) -> String {
+        let uuid = UUID().uuidString
+        store.updateValue(callback, forKey: uuid)
+        return uuid
+    }
+    func unSubscribe(token: String) {
+        store[token] = nil
+    }
+}`}
+</SyntaxHighlighter>
+
+ここで実装していることは非常にシンプルで、新たに追加したstoreプロパティにsubscribeではViewから受け取ったコールバックをstoreに登録しtokenを発行する、unSubscribeではtokenを元にstoreからコールバックを削除、onではstoreに登録されたコールバックにアクションを流し込んでいるだけです。
+
+subscribe, unSubscribeの実装に関しては参考文献にある[iOS アプリ設計パターン入門](https://peaks.cc/books/iOS_architecture)を参考にさせていただきました。
+
+### 実際に使ってみる
+
+正しい実装かは別として一応単方向のデータフローを実現するための基盤が実装できたので実際にプロジェクトで使用してみます。
+ミュージックプレイヤーでは再生するアルバムのキュー管理に使用しました。
+
+#### Dispatcherの定義
+https://github.com/g4zeru/AudioPlayerWithSwiftUI/blob/master/AudioPlayerWithSwiftUI/Dispatcher.swift
+<SyntaxHighlighter language="swift" style={xcode}>{`import MediaPlayer
+import Napoli
+\n
+class QueueDispatcher: DispatcherStoreProtocol {
+    var store: [String: (QueueDispatcher.Action) -> Void] = [:]
+    typealias Action = (MPMediaItemCollection, MPMediaItem?)
+    static let shared = QueueDispatcher()
+}`}</SyntaxHighlighter>
+
+今回はSingletonで共通のインスタンスを使用します
+
+#### Dispatcherに登録する
+
+https://github.com/g4zeru/AudioPlayerWithSwiftUI/blob/master/AudioPlayerWithSwiftUI/HomeView.swift
+<SyntaxHighlighter language="swift" style={xcode}>{`
+private class EnQueueController {
+    private var token: String?
+    private var dispatcher: QueueDispatcher
+\n
+    deinit {
+        dispatcher.unSubscribe(token: token!)
+    }
+\n
+    init(dispatcher: QueueDispatcher, player: MPMusicPlayerController) {
+        self.dispatcher = dispatcher
+        token = dispatcher.subscribe { collection, item in
+            player.setQueue(with: collection)
+            if let item = item {
+                player.setQueue(with: collection)
+                player.nowPlayingItem = item
+                player.prepareToPlay()
+                player.play()
+            }
+        }
+    }
+}
+`}</SyntaxHighlighter>
+新たにQueueが流れてきた時にMusicPlayerControllerに伝える役目を持っていて
+初期化時に外部からDispatcherを受け取り、Queueに変更があり次第Playerの状態を更新しています
+
+
+https://github.com/g4zeru/AudioPlayerWithSwiftUI/blob/master/AudioPlayerWithSwiftUI/PlayerView.swift
+<SyntaxHighlighter language="swift" style={xcode}>{`
+class QueueListener: ObservableObject {
+    private var token: String?
+    private var dispatcher: QueueDispatcher
+    static let shared = QueueListener(dispatcher: .shared)
+    @Published var queue: [MPMediaItem] = []
+    deinit {
+        dispatcher.unSubscribe(token: token!)
+    }
+\n
+    init(dispatcher: QueueDispatcher) {
+        self.dispatcher = dispatcher
+        token = dispatcher.subscribe(callback: { [weak self] collection, _ in
+            self?.queue = collection.items
+        })
+    }
+}
+`}</SyntaxHighlighter>
+
+実際の画面
+<img src="/20200607/image0.png" width="250px"/>
+
+こちらではQueueの変更をViewに伝えるためにObservableObjectを継承していて、queueの変更をViewに伝えています。
+
+#### Actionを発行する
+
+<SyntaxHighlighter language="swift" style={xcode}>{`
+struct AlbumDetailView: View {
+    private let album: Album
+    init(album: Album) {
+        self.album = album
+    }
+\n
+    var body: some View {
+        VStack(alignment: .leading) {
+            AlbumListHeader(album: album, canPushArtistList: true).frame(height: 120).padding(.leading)
+            List(album.items, id: \.persistentID) { item in
+                Button(action: {
+                    self.play(item: item)
+                }) {
+                    HStack {
+                        Text(item.title!)
+                        Spacer()
+                        Text(Calendar.timeToString(time: Float(item.playbackDuration))).foregroundColor(.pink)
+                    }
+                }
+            }
+        }
+        .navigationBarTitle(Text(""), displayMode: .inline)
+        .padding(.top, 10)
+    }
+\n
+    private func play(item: MPMediaItem) {
+        let collection = MPMediaItemCollection(items: album.items)
+        QueueDispatcher.shared.on(action: (collection, item))
+    }
+}
+`}</SyntaxHighlighter>
+再生する楽曲が選択された時に直接MusicPlayerControllerにキューを渡すのではなくDispatcher経由で渡すので、Dispatcher.onに選択された楽曲、アルバムを渡しています。こうすることで再生する楽曲を決定した後の処理を考慮する必要がなくなります。
+
+### まとめ
+
+今回試した方法にはいくつか問題があり(例えばProtocolで定義するため、見えてはいけないStoreが外部から見えてしまっているなど)、上手く行ったとは言えない結果になってしまいました。しかしながら実装する中で気付きを得られ、反映することもできたため非常にいい経験を積むことができました。今後も改善を続けていこうと思うのでまた進捗が出来次第ご報告させていただこうと思います。アドバイスや意見などいただけると非常に嬉しいです。
