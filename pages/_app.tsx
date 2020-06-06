@@ -1,10 +1,11 @@
 import Profile from "~/components/organisms/Profile";
-import Head from "~/components/organisms/Head";
+import Head from "next/head";
 import Header from "~/components/organisms/Header";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { AppProps } from "next/app";
 import * as React from "react";
+import json from "~/metaData.json";
 
 const Contents = styled.div`
   max-width: 1000px;
@@ -41,11 +42,57 @@ const Main = styled.main`
   padding-bottom: 30px;
 `;
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
+  const path = router.pathname;
+  const metaDatas: { [key: string]: any } = json;
+  const metaData = metaDatas[path];
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Head />
+      <Head>
+        <meta charSet="utf-8" />
+        {metaData === undefined && path === "/" && (
+          <React.Fragment>
+            <title>てらにゃんの備忘録</title>
+            <meta property="og:title" content="てらにゃんの備忘録" />
+            <meta
+              name="description"
+              content="日々学んだことを書き留めておくためのテック&雑ブログ"
+            />
+            <meta
+              property="og:description"
+              content="日々学んだことを書き留めておくためのテック&雑ブログ"
+            />
+          </React.Fragment>
+        )}
+        {metaData !== undefined && (
+          <React.Fragment>
+            {metaData.title !== undefined && (
+              <React.Fragment>
+                <title>{metaData.title}</title>
+                <meta property="og:title" content={metaData.title} />
+              </React.Fragment>
+            )}
+            {metaData.description !== undefined && (
+              <React.Fragment>
+                <meta name="description" content={metaData.description} />
+                <meta
+                  property="og:description"
+                  content={metaData.description}
+                />
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        )}
+        <meta property="og:site_name" content="てらにゃんの備忘録" />
+        <meta property="og:locale" content="ja_JP" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+          rel="stylesheet"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@tera_ny" />
+      </Head>
       <Header />
       <Contents>
         <Main>
