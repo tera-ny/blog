@@ -46,7 +46,7 @@ Fluxは本来Reactでの使用を想定しているため Swift を使用した 
 
 [こちら](https://github.com/g4zeru/Napoli)のプロジェクトでは Dispatcher のインターフェースを提供し View から Dispatcher を使用することで Flux を再現するように実装してみました。
 
-Dispatcher.swift
+https://github.com/g4zeru/Napoli/blob/master/Sources/Napoli/Dispatcher.swift
 <SyntaxHighlighter language="swift" style={xcode}>
   {`import Foundation
 \n
@@ -61,7 +61,7 @@ public protocol DispatcherProtocol {
 DispatcherはProtocolで定義し、画面につき1つのDispatcher、もしくはモデルにつき1つのDispatcherが存在することを想定しています。
 ここではDispatcheのインターフェースを提供するのみで実装はそれぞれのDispatcherに準拠したクラスで用意するか、[こちら](https://github.com/g4zeru/Napoli/blob/master/Sources/Napoli/DispatcherStore.swift)で提供しているStoreを所持したDispatcherを拡張したDispatcherStoreを準拠してデータフローを実現します。
 
-DispatcherStore.swift
+https://github.com/g4zeru/Napoli/blob/master/Sources/Napoli/DispatcherStore.swift
 <SyntaxHighlighter language="swift" style={xcode}>
     {`import Foundation
 \n
@@ -201,4 +201,4 @@ struct AlbumDetailView: View {
 
 ### まとめ
 
-今回試した方法にはいくつか問題があり(例えばProtocolで定義するため、見えてはいけないStoreが外部から見えてしまっているなど)、上手く行ったとは言えない結果になってしまいました。しかしながら実装する中で気付きを得られ、反映することもできたため非常にいい経験を積むことができました。今後も改善を続けていこうと思うのでまた進捗が出来次第ご報告させていただこうと思います。アドバイスや意見などいただけると非常に嬉しいです。
+今回試した方法にはいくつか問題があり(例えばProtocolで定義するため見えてはいけないStoreが外部から見えてしまっているなど)、上手く行ったとは言えない結果になってしまいました。しかしながら実装する中で気付きを得られ、反映することもできたため非常にいい経験を積むことができました。今後も改善を続けていこうと思うのでまた進捗が出来次第ご報告させていただこうと思います。アドバイスや意見などいただけると非常に嬉しいです。
