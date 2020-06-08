@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
-    "build": "npm run command/collect && next build",
+    "build": "npm run command/collect && npm run command/sitemap && next build",
     "start": "next start",
     "type-check": "tsc",
     "command/collect": "node scripts/exportMeta.js",

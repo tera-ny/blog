@@ -1,1 +1,0 @@
-{"/posts/20200605":{"title":"SwiftPM で作る iOS 向け Static library を作ってみた","description":"今までEmbedded frameworkでしかツールを作っていなかった筆者が初めて外部に公開できるライブラリを作ってみました。"},"/posts/20200607":{"title":"どうにかiOSで納得の行くFluxパターンを見つけられないか","description":"FluxはもともとReactを使用するWebアプリケーションを想定したアーキテクチャですが、その概念をiOSに持ってこれないか奮闘してみました。"}}
