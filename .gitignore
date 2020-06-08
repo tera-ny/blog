@@ -3,4 +3,5 @@ node_modules
 .DS_Store
 .vercel
 metaData.json
+sitemap.xml
 yarn-error.log
