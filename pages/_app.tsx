@@ -65,23 +65,19 @@ const App = ({ Component, pageProps, router }: AppProps) => {
             />
           </React.Fragment>
         )}
-        {metaData !== undefined && (
+        {metaData?.title && (
           <React.Fragment>
-            {metaData.title !== undefined && (
-              <React.Fragment>
-                <title>{metaData.title}</title>
-                <meta property="og:title" content={metaData.title} />
-              </React.Fragment>
-            )}
-            {metaData.description !== undefined && (
-              <React.Fragment>
-                <meta name="description" content={metaData.description} />
-                <meta
-                  property="og:description"
-                  content={metaData.description}
-                />
-              </React.Fragment>
-            )}
+            <title>{metaData.title}</title>
+            <meta property="og:title" content={metaData.title} />
+          </React.Fragment>
+        )}
+        {metaData?.description && (
+          <React.Fragment>
+            <meta name="description" content={metaData.description} />
+            <meta
+              property="og:description"
+              content={metaData.description}
+            />
           </React.Fragment>
         )}
         <meta property="og:site_name" content="てらにゃんの備忘録" />
