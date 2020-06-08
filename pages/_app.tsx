@@ -47,7 +47,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
   const metaDatas: { [key: string]: any } = json;
   const metaData = metaDatas[path];
   return (
-    <React.Fragment>
+    <div>
       <GlobalStyle />
       <Head>
         <meta charSet="utf-8" />
@@ -96,7 +96,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         </Main>
         <Profile />
       </Contents>
-    </React.Fragment>
+    </div>
   );
 };
 
