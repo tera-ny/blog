@@ -35,7 +35,7 @@ export default () => {
       <Title>
         <Link href="/">
           <TopLink>
-            <b>てらにゃんの備忘録</b>
+            <b>てらにゃんの備忘録。</b>
           </TopLink>
         </Link>
       </Title>
