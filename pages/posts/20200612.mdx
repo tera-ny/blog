@@ -35,7 +35,7 @@ SliderのInitializerにはminimumValueLabelとmaximumValueLabelが用意され�
 Initializerに使用するMusicPlayerControllerを受け取って再生情報を使用します。
 <Image src="/20200612/image3.png" width="90%"/><br/>
 
-しかしこのままではSwiftUI側にPlayerの再生時間が変更されたことが通知されないので、最初の一回のみレンダリングされます。そこでTimerを使用してSliderに定期的にイベントを送信します。UIViewControllerを使っていた際は[Timer.scheduledTimer](https://developer.apple.com/documentation/foundation/timer/2091889-scheduledtimer)こちらを使っていましたが、SwiftUIで使用する場合は非常に面倒臭いです。そこで、SwiftUIのViewに用意されている[onReceive](https://developer.apple.com/documentation/swiftui/view/3365935-onreceive)メソッドを使用してSliderにイベントを流します。
+しかしこのままではSwiftUI側にPlayerの再生時間が変更されたことが通知されないので、最初の一回のみレンダリングされます。そこでTimerを使用してSliderに定期的にイベントを送信します。UIViewControllerを使っていた際は[Timer.scheduledTimer](https://developer.apple.com/documentation/foundation/timer/2091889-scheduledtimer)こちらを使っていましたが、SwiftUIで使用する場合は非常に面倒臭いです。そこで、SwiftUIのViewに用意されている[onReceive](https://developer.apple.com/documentation/swiftui/view/3365935-onreceive)メソッドとTimer側で用意されているPublisherを作成する[publish](https://developer.apple.com/documentation/foundation/timer/3329589-publish)メソッドを使用してSliderにイベントを流します
 <Image src="/20200612/image4.png" width="90%"/><br/>
 1秒間隔でSliderにイベントを流すことができました。
 
