@@ -1,22 +1,22 @@
 import Image from '../../components/atoms/Image'
 
 export const meta = {
-  title: "SwiftUIを使ってミュージックプレイヤーのシークバーを作ってみた",
+  title: "SwiftUIを使ってMusicPlayerのSeekBarを作ってみた",
   description:
-    "ミュージックプレイヤーの機能を満たすためにSwiftUIの機能を使いシークバーを作成してみます。",
+    "MusicPlayerの機能を満たすためにSwiftUIの機能を使いSeekBarを作成してみます。",
 };
 
-# SwiftUIを使ってミュージックプレイヤーのシークバーを作ってみた
+# SwiftUIを使ってMusicPlayerのSeekBarを作ってみた
 
 [使用したプロジェクト](https://github.com/g4zeru/AudioPlayerWithSwiftUI)
 
 ## 概要
 <Image src="/20200612/image1.png" width="50%"/><br/>
-ミュージックプレイヤーのシークバーには主に2つの機能があります。1つ目は再生されている楽曲の再生位置を知らせること、2つ目は現在の再生位置からシークバーをスライドした際に楽曲にスライドした位置を伝えることです。
+MusicPlayerのSeekBarには主に2つの機能があります。1つ目は再生されている楽曲の再生位置を知らせること、2つ目は現在の再生位置からSeekBarをスライドした際に楽曲にスライドした位置を伝えることです。
 今回はこの機能を満たすことを目標に実装します。
 
 ## 実装
-### シークバーの雛形を作る
+### SeekBarの雛形を作る
 Stateに再生時間のTimeIntervalを持ったSliderのラッパービューを実装します。
 <Image src="/20200612/image0.png" width="50%"/><br/>
 ちなみにaccentColorを指定するとSliderのleft borderがaccentColorになります。
@@ -39,7 +39,7 @@ Initializerに使用するMusicPlayerControllerを受け取って再生情報を
 <Image src="/20200612/image4.png" width="90%"/><br/>
 1秒間隔でSliderにイベントを流すことができました。
 
-### シークバーをスライドさせて時にMusicPlayerControllerに伝達する
+### SeekBarをスライドさせて時にMusicPlayerControllerに伝達する
 
 スライダーにイベントを流し込み、再生情報を表示することができました。しかしこのままでは表示はできてもユーザーから変更することはできません。そこでSeekBarにisEdittingステートを用意して変更状態を管理します。
 
