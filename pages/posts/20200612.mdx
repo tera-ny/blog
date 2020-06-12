@@ -1,0 +1,53 @@
+import Image from '../../components/atoms/Image'
+export const meta = {
+  title: "SwiftUIを使ってミュージックプレイヤーのシークバーを作ってみた",
+  description:
+    "ミュージックプレイヤーの機能を満たすためにSwiftUIの機能を使いシークバーを作成してみます。",
+};
+
+# SwiftUIを使ってミュージックプレイヤーのシークバーを作ってみた
+
+[使用したプロジェクト](https://github.com/g4zeru/AudioPlayerWithSwiftUI)
+
+## 概要
+<Image src="/20200612/image1.png" width="50%"/><br/>
+ミュージックプレイヤーのシークバーには主に2つの機能があります。1つ目は再生されている楽曲の再生位置を知らせること、2つ目は現在の再生位置からシークバーをスライドした際に楽曲にスライドした位置を伝えることです。
+今回はこの機能を満たすことを目標に実装します。
+
+## 実装
+### シークバーの雛形を作る
+Stateに再生時間のTimeIntervalを持ったSliderのラッパービューを実装します。
+<Image src="/20200612/image0.png" width="50%"/><br/>
+ちなみにaccentColorを指定するとSliderのleft borderがaccentColorになります。
+
+### 現在の再生位置を表示する
+現在の再生位置を知らせる方法として、ラベルで再生した秒数、終了時までのカウントダウンを表示することに加え、SliderのThumbの位置で表現することができます。
+
+Viewの実装に入る前に便利なUtilityを用意しようと思います。MediaPlayerの再生時間などはTimeIntervalで表現されているので、CalendarにTimeIntervalをStringに変換するExtensionを用意します。
+
+<Image src="/20200612/image2.png" width="90%"/><br/>
+TimeInterval(Double)に実装しても良かったのですが、時間の加工などはCalendarに書くようにしているので今回はCalendarに実装しました。ここら辺は好みだと思います。
+
+ではこのUtilityを使って、再生した時間、終了時までのカウントダウンを表示していきます。
+
+SliderのInitializerにはminimumValueLabelとmaximumValueLabelが用意されており、特に左右のラベル表示位置にこだわりはないのでこちらを使用します。
+Initializerに使用するMusicPlayerControllerを受け取って再生情報を使用します。
+<Image src="/20200612/image3.png" width="90%"/><br/>
+
+しかしこのままではSwiftUI側にPlayerの再生時間が変更されたことが通知されないので、最初の一回のみレンダリングされます。そこでTimerを使用してSliderに定期的にイベントを送信します。UIViewControllerを使っていた際は[Timer.scheduledTimer](https://developer.apple.com/documentation/foundation/timer/2091889-scheduledtimer)こちらを使っていましたが、SwiftUIで使用する場合は非常に面倒臭いです。そこで、SwiftUIのViewに用意されている[onReceive](https://developer.apple.com/documentation/swiftui/view/3365935-onreceive)メソッドを使用してSliderにイベントを流します。
+<Image src="/20200612/image4.png" width="90%"/><br/>
+1秒間隔でSliderにイベントを流すことができました。
+
+### シークバーをスライドさせて時にMusicPlayerControllerに伝達する
+
+スライダーにイベントを流し込み、再生情報を表示することができました。しかしこのままでは表示はできてもユーザーから変更することはできません。そこでSeekBarにisEdittingステートを用意して変更状態を管理します。
+
+Sliderの[InitializerにはonEditingChangedが用意されていて](https://developer.apple.com/documentation/swiftui/slider/3365403-init)編集時のハンドリングを行うことができます。
+それに加て、先ほど追加したTimerのイベントにisEditingを考慮した実装に変更します。
+<Image src="/20200612/image5.png" width="90%"/><br/>
+
+以上の実装によって、ユーザーのアクションと競合しない形でSliderにイベントを流すことができました。
+
+### まとめ
+
+今回使用したonReceiveなどSwiftUIには便利なメソッドが数多く用意されているので、意外と簡単に実装できたので、いろいろなプロジェクトでSwiftUIを活用した実装ができないか試してみようと思います。
