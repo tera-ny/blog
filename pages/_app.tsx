@@ -53,8 +53,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <meta charSet="utf-8" />
         {metaData === undefined && path === "/" && (
           <React.Fragment>
-            <title>てらにゃんの備忘録</title>
-            <meta property="og:title" content="てらにゃんの備忘録" />
+            <title>てらにゃんの備忘録。</title>
             <meta
               name="description"
               content="日々学んだことを書き留めておくためのテック&雑ブログ"
@@ -80,7 +79,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
             />
           </React.Fragment>
         )}
-        <meta property="og:site_name" content="てらにゃんの備忘録" />
+        <meta property="og:site_name" content="てらにゃんの備忘録。" />
         <meta property="og:locale" content="ja_JP" />
         <link
           href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
