@@ -91,6 +91,7 @@ const App = ({ Component, pageProps, router }: AppProps) => {
       <Header />
       <Contents>
         <Main>
+          <script async src="//cdn.embedly.com/widgets/platform.js"></script>
           <Component {...pageProps} />
         </Main>
         <Profile />
