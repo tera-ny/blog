@@ -1,0 +1,26 @@
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { sunburst } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
+export const meta = {
+  title: "CombineでFirestoreを利用する",
+  description:
+    "SwiftUIとともに使用するCombineFrameworkでFirestoreからドキュメントを取得する処理の実装をしてみました。",
+};
+
+# CombineでFirestoreを利用する
+
+## Subscriptionの定義
+FirestoreのDocumentやCollectionをgetするだけであればFutureなどを使用してある程度簡単に実装することができますが、SnapshotListenerを利用した取得は自前で用意する必要があります。SubscriptionではSnapshotの登録、データのデコードをになっていて、Collection,Documentそれぞれの処理を定義しています。
+
+<blockquote class="embedly-card"><h4><a href="https://gist.github.com/g4zeru/cf723f5857d2bdea36b331f9c1427c3d.js?file=FirestoreSubscription.swift">Document.swift</a></h4></blockquote>
+
+## DocumentをlistenするためのPublisherの定義
+PublisherはSubscriberに先ほど定義したSubscriptionをレシーブする機能をになっていて、Outputを定義するためにDocument、Collectionそれぞれで定義する必要があります。
+
+<blockquote class="embedly-card"><h4><a href="https://gist.github.com/g4zeru/cf723f5857d2bdea36b331f9c1427c3d.js?file=FirestorePublishers.swift">Document.swift</a></h4></blockquote>
+
+## Documentの定義
+先ほどからチラチラ見えていたDocumentはDocumentReferenceとModelを持つ構造体として定義します。
+モデルはCodableに準拠する必要があります。getとlistenそれぞれ静的関数で定義されていて、RxSwiftを普段から使用しているので基本的にはDeferrを通すようにしています。
+
+<blockquote class="embedly-card"><h4><a href="https://gist.github.com/g4zeru/cf723f5857d2bdea36b331f9c1427c3d.js?file=Document.swift">Document.swift</a></h4></blockquote>
