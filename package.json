@@ -16,7 +16,7 @@
     "@mdx-js/loader": "^1.6.1",
     "@next/mdx": "^9.4.1",
     "@types/react-syntax-highlighter": "^11.0.4",
-    "next": "^9.4.1",
+    "next": "^11.1.0",
     "nextjs-sitemap-generator": "^1.0.0",
     "path-parser": "^6.1.0",
     "react": "^16.13.1",
