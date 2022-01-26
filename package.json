@@ -8,8 +8,8 @@
     "lint": "next lint"
   },
   "repository": "git@github.com:teranyan/tech-blog.git",
-  "author": "g4zeru <haru25haru02@gmail.com>",
-  "license": "Apache",
+  "author": "teranyan <haru25haru02@gmail.com>",
+  "license": "Unlicense",
   "dependencies": {
     "next": "^12.0.8",
     "react": "^17.0.2",
