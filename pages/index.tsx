@@ -65,8 +65,7 @@ export default () => {
         }
         .imageWrapper {
           position: relative;
-          max-width: 240px;
-          width: 100%;
+          width: 240px;
           aspect-ratio: 1/1;
         }
         .secondary {
@@ -134,6 +133,7 @@ export default () => {
           }
           .imageWrapper {
             max-width: unset;
+            width: 100%;
           }
           .primary {
             width: 100%;
