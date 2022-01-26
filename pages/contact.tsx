@@ -1,10 +1,26 @@
 import Link from "next/link";
-import * as React from "react";
-import Image from "next/image";
+import { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 
-export default () => {
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};
+
+const Contact: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>teranyan/Contact me</title>
+        <meta property="og:title" content="teranyan/Contact me" />
+        <meta property="og:description" content="🐏" />
+        <meta property="og:locale" content="ja" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/images/ogp-icon.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@0x746572616e79" />
+      </Head>
       <div className="container">
         <header>
           <Link href={"/"}>
@@ -105,3 +121,5 @@ export default () => {
     </>
   );
 };
+
+export default Contact;
