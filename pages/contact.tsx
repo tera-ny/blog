@@ -51,6 +51,11 @@ const Contact: NextPage = () => {
                 Twitter @0x746572616e79
               </a>
             </Link>
+            <Link href={"https://discord.com/invite/hXryf5PKAy"}>
+              <a target={"_blank"} rel="noreferrer noopener">
+                Discord "Anchor" server @teranyan
+              </a>
+            </Link>
           </section>
         </main>
         <hr />
