@@ -66,6 +66,7 @@ const Contact: NextPage = () => {
           padding: 34px 54px 0;
           display: flex;
           gap: 28px;
+          font-size: 20px;
         }
 
         footer {
@@ -91,6 +92,10 @@ const Contact: NextPage = () => {
           gap: 40px;
         }
 
+        section a {
+          font-size: 18px;
+        }
+
         h1,
         h2,
         h3 {
@@ -101,7 +106,6 @@ const Contact: NextPage = () => {
         }
         a {
           color: #000000;
-          font-size: 18px;
         }
         a:hover {
           color: #f8ab38;

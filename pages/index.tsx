@@ -68,6 +68,7 @@ const Index: NextPage = () => {
           padding: 34px 54px 0;
           display: flex;
           gap: 28px;
+          font-size: 20px;
         }
         main {
           display: flex;
@@ -127,7 +128,7 @@ const Index: NextPage = () => {
           color: #494949;
         }
         a {
-          color: #696969;
+          color: #000000;
         }
         a:hover {
           color: #f8ab38;
