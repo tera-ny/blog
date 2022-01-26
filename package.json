@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "repository": "git@github.g4zeru:g4zeru/tech-blog.git",
+  "repository": "git@github.com:teranyan/tech-blog.git",
   "author": "g4zeru <haru25haru02@gmail.com>",
   "license": "Apache",
   "dependencies": {
