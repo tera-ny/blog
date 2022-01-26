@@ -18,7 +18,10 @@ const Index: NextPage = () => {
         <meta property="og:description" content="🐏" />
         <meta property="og:locale" content="ja" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="/images/ogp-icon.png" />
+        <meta
+          property="og:image"
+          content="https://teranyan.tokyo/images/ogp-icon.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@0x746572616e79" />
       </Head>
