@@ -25,54 +25,31 @@ const Index: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@0x746572616e79" />
       </Head>
-      <div className="container">
-        <header>
-          <span>About Me</span>
-          <Link href={"/contact"}>
-            <a>
-              <span>Contact</span>
-            </a>
-          </Link>
-        </header>
-        <main>
-          <div className="primary">
-            <div className="imageWrapper">
-              <Image src="/images/icon.png" layout="fill" />
-            </div>
-            <h1>teranyan</h1>
-            <p>Web front & iOS Engineer</p>
+      <main>
+        <div className="primary">
+          <div className="imageWrapper">
+            <Image src="/images/icon.png" layout="fill" />
           </div>
-          <div className="secondary">
-            <h2>Skill-set</h2>
-            <section>
-              <h3>languages:</h3>
-              <p>Swift, Typescript, Python</p>
-            </section>
-            <section>
-              <h3>tools,libraries:</h3>
-              <p>Swift UI, RxSwift, React.js, Next.js, Django, MySQL</p>
-            </section>
-            <section>
-              <h3>others:</h3>
-              <p>Firebase, Google Cloud Platform, Vercel, Git, Github, figma</p>
-            </section>
-          </div>
-        </main>
-        <hr />
-        <footer>2022 teranyan</footer>
-      </div>
+          <h1>teranyan</h1>
+          <p>Web front & iOS Engineer</p>
+        </div>
+        <div className="secondary">
+          <h2>Skill-set</h2>
+          <section>
+            <h3>languages:</h3>
+            <p>Swift, Typescript, Python</p>
+          </section>
+          <section>
+            <h3>tools,libraries:</h3>
+            <p>Swift UI, RxSwift, React.js, Next.js, Django, MySQL</p>
+          </section>
+          <section>
+            <h3>others:</h3>
+            <p>Firebase, Google Cloud Platform, Vercel, Git, Github, figma</p>
+          </section>
+        </div>
+      </main>
       <style jsx>{`
-        .container {
-          display: grid;
-          grid-template-rows: 58px 1fr 1px 34px;
-          min-height: 100vh;
-        }
-        header {
-          padding: 34px 54px 0;
-          display: flex;
-          gap: 28px;
-          font-size: 20px;
-        }
         main {
           display: flex;
           justify-content: space-evenly;
@@ -130,19 +107,7 @@ const Index: NextPage = () => {
           font-size: 14px;
           color: #494949;
         }
-        a {
-          color: #000000;
-        }
-        a:hover {
-          color: #f8ab38;
-        }
-        hr {
-          margin: 0 28px;
-        }
         @media (max-width: 700px) {
-          header {
-            padding: 20px 20px 12px;
-          }
           main {
             flex-direction: column;
             padding: 0 12px;
@@ -177,9 +142,6 @@ const Index: NextPage = () => {
           }
           section > p {
             padding-left: 12px;
-          }
-          hr {
-            margin: 0 12px;
           }
         }
       `}</style>

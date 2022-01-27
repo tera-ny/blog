@@ -24,67 +24,36 @@ const Contact: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@0x746572616e79" />
       </Head>
-      <div className="container">
-        <header>
-          <Link href={"/"}>
-            <a>
-              <span>About Me</span>
+
+      <main>
+        <section>
+          <h3>Portfolio</h3>
+          <Link href={"https://github.com/tera-ny"}>
+            <a target={"_blank"} rel="noreferrer noopener">
+              Github @tera-ny
             </a>
           </Link>
-          <span>Contact</span>
-        </header>
-        <main>
-          <section>
-            <h3>Portfolio</h3>
-            <Link href={"https://github.com/tera-ny"}>
-              <a target={"_blank"} rel="noreferrer noopener">
-                Github @tera-ny
-              </a>
-            </Link>
-            <Link href={"https://zenn.dev/tera_ny"}>
-              <a target={"_blank"} rel="noreferrer noopener">
-                Zenn @tera_ny
-              </a>
-            </Link>
-          </section>
-          <section>
-            <h3>SNS</h3>
-            <Link href={"https://twitter.com/0x746572616e79"}>
-              <a target={"_blank"} rel="noreferrer noopener">
-                Twitter @0x746572616e79
-              </a>
-            </Link>
-            <Link href={"https://discord.com/invite/hXryf5PKAy"}>
-              <a target={"_blank"} rel="noreferrer noopener">
-                Discord "Anchor" server @teranyan
-              </a>
-            </Link>
-          </section>
-        </main>
-        <hr />
-        <footer>2022 teranyan</footer>
-      </div>
+          <Link href={"https://zenn.dev/tera_ny"}>
+            <a target={"_blank"} rel="noreferrer noopener">
+              Zenn @tera_ny
+            </a>
+          </Link>
+        </section>
+        <section>
+          <h3>SNS</h3>
+          <Link href={"https://twitter.com/0x746572616e79"}>
+            <a target={"_blank"} rel="noreferrer noopener">
+              Twitter @0x746572616e79
+            </a>
+          </Link>
+          <Link href={"https://discord.com/invite/hXryf5PKAy"}>
+            <a target={"_blank"} rel="noreferrer noopener">
+              Discord "Anchor" server @teranyan
+            </a>
+          </Link>
+        </section>
+      </main>
       <style jsx>{`
-        .container {
-          display: grid;
-          grid-template-rows: 58px 1fr 1px 34px;
-          min-height: 100vh;
-        }
-        header {
-          padding: 34px 54px 0;
-          display: flex;
-          gap: 28px;
-          font-size: 20px;
-        }
-
-        footer {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 12px;
-          font-weight: 300;
-        }
-
         main {
           display: flex;
           flex-direction: column;
@@ -104,6 +73,13 @@ const Contact: NextPage = () => {
           font-size: 18px;
         }
 
+        a {
+          color: #000000;
+        }
+        a:hover {
+          color: #f8ab38;
+        }
+
         h1,
         h2,
         h3 {
@@ -111,23 +87,6 @@ const Contact: NextPage = () => {
         }
         h3 {
           font-size: 24px;
-        }
-        a {
-          color: #000000;
-        }
-        a:hover {
-          color: #f8ab38;
-        }
-        hr {
-          margin: 0 28px;
-        }
-        @media (max-width: 700px) {
-          header {
-            padding: 20px 20px 12px;
-          }
-          hr {
-            margin: 0 12px;
-          }
         }
       `}</style>
     </>

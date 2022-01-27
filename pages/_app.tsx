@@ -1,6 +1,8 @@
 import { AppProps } from "next/app";
 import { NextPage } from "next";
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { ChangeEvent, Fragment, useCallback, useRef, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -21,6 +23,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
     setVolume(e.currentTarget.valueAsNumber);
     audioRef.current.volume = e.currentTarget.valueAsNumber;
   }, []);
+  const router = useRouter();
   return (
     <>
       <audio ref={audioRef} src="/bgm/hakutai_city_noon.wav" loop></audio>
@@ -45,7 +48,37 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           />
         </div>
       </div>
-      <Component {...pageProps} />
+      <div className="container">
+        <header>
+          {[
+            { title: "About Me", ref: "/" },
+            { title: "Contact", ref: "/contact" },
+          ].map((item, index) => (
+            <Fragment key={index}>
+              {item.ref === router.pathname && <span>{item.title}</span>}
+              {item.ref !== router.pathname && (
+                <Link href={item.ref}>
+                  <a>
+                    <span>{item.title}</span>
+                  </a>
+                </Link>
+              )}
+            </Fragment>
+          ))}
+        </header>
+        <Component {...pageProps} />
+        <hr />
+        <footer>
+          <p>©2022 teranyan</p>
+          <p>
+            ©2006 Pokémon. ©1995-2006 Nintendo/Creatures Inc./GAME FREAK inc.
+          </p>
+          <p>
+            これは「Pokémon DP Sound
+            Library」の利用規約に同意し作成されたコンテンツです。
+          </p>
+        </footer>
+      </div>
       <style jsx global>{`
         h1,
         h2,
@@ -129,6 +162,54 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           background: #f8ab38;
           border-radius: 10px;
           border: solid 3px #f8e7cd;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 20px;
+          -webkit-appearance: none;
+          border-radius: 50%;
+          height: 20px;
+          cursor: ew-resize;
+          background: white;
+        }
+
+        .container {
+          min-height: 100vh;
+          display: grid;
+          grid-template-rows: 58px 1fr 1px auto;
+        }
+        hr {
+          margin: 0 28px;
+        }
+        footer {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          font-weight: 300;
+          padding: 12px;
+          justify-content: space-around;
+        }
+        header {
+          padding: 34px 54px 0;
+          display: flex;
+          gap: 28px;
+          font-size: 20px;
+        }
+        a {
+          color: #000000;
+        }
+        a:hover {
+          color: #f8ab38;
+        }
+        @media (max-width: 700px) {
+          header {
+            padding: 20px 20px 12px;
+          }
+          hr {
+            margin: 0 12px;
+          }
         }
       `}</style>
     </>
