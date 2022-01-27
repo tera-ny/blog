@@ -1,9 +1,50 @@
 import { AppProps } from "next/app";
 import { NextPage } from "next";
+import { ChangeEvent, useCallback, useRef, useState } from "react";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isStarted, setIsStarted] = useState(false);
+  const [currentVolume, setVolume] = useState(0.2);
+  const toggleBGM = useCallback(() => {
+    if (!audioRef.current) return;
+    audioRef.current.volume = currentVolume;
+    if (isStarted) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsStarted((e) => !e);
+  }, [isStarted, currentVolume]);
+  const changeVolume = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    if (!audioRef.current) return;
+    setVolume(e.currentTarget.valueAsNumber);
+    audioRef.current.volume = e.currentTarget.valueAsNumber;
+  }, []);
   return (
     <>
+      <audio ref={audioRef} src="/bgm/hakutai_city_noon.wav" loop></audio>
+      <div className="player">
+        <div className="content">
+          <p className="caption">bgm</p>
+          <p className="title">ハクタイシティ(昼)</p>
+          <button className="toggleButton" onClick={toggleBGM}>
+            {isStarted ? "pause" : "play"}
+          </button>
+        </div>
+        <div className="volumeWrapper">
+          volume
+          <input
+            className="volume"
+            type="range"
+            min="0"
+            step="0.1"
+            max="1"
+            value={currentVolume}
+            onChange={changeVolume}
+          />
+        </div>
+      </div>
       <Component {...pageProps} />
       <style jsx global>{`
         h1,
@@ -27,6 +68,67 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         body {
           font-family: "Rubik", sans-serif;
           margin: 0;
+        }
+      `}</style>
+      <style jsx>{`
+        .player {
+          display: flex;
+          gap: 12px;
+          align-items: stretch;
+          position: fixed;
+          right: 12px;
+          bottom: 20px;
+          padding: 12px 12px;
+
+          color: white;
+          background-color: rgb(27, 27, 27);
+          filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.2));
+          will-change: filter;
+          border-radius: 8px;
+          height: 96px;
+        }
+        .content {
+          width: 120px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          justify-content: flex-start;
+          align-items: flex-start;
+        }
+        .caption {
+          font-size: 10px;
+        }
+        .title {
+          font-size: 14px;
+        }
+        .toggleButton {
+          font-size: 12px;
+          padding: 4px 8px;
+          margin: 0;
+          width: 54px;
+          height: 24px;
+        }
+        .volumeWrapper {
+          width: 60px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .volume {
+          grid-column: 2/3;
+          grid-row: 1/3;
+          transform: rotate(270deg) translateX(-30px);
+          width: 60px;
+        }
+        input[type="range"] {
+          -webkit-appearance: none;
+          appearance: none;
+          cursor: pointer;
+          outline: none;
+          height: 12px;
+          background: #f8ab38;
+          border-radius: 10px;
+          border: solid 3px #f8e7cd;
         }
       `}</style>
     </>
