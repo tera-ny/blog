@@ -1,53 +1,13 @@
 import { AppProps } from "next/app";
 import { NextPage } from "next";
-import { ChangeEvent, Fragment, useCallback, useRef, useState } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isStarted, setIsStarted] = useState(false);
-  const [currentVolume, setVolume] = useState(0.2);
-  const toggleBGM = useCallback(() => {
-    if (!audioRef.current) return;
-    audioRef.current.volume = currentVolume;
-    if (isStarted) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsStarted((e) => !e);
-  }, [isStarted, currentVolume]);
-  const changeVolume = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (!audioRef.current) return;
-    setVolume(e.currentTarget.valueAsNumber);
-    audioRef.current.volume = e.currentTarget.valueAsNumber;
-  }, []);
   const router = useRouter();
   return (
     <>
-      <audio ref={audioRef} src="/bgm/hakutai_city_noon.wav" loop></audio>
-      <div className="player">
-        <div className="content">
-          <p className="caption">bgm</p>
-          <p className="title">ハクタイシティ(昼)</p>
-          <button className="toggleButton" onClick={toggleBGM}>
-            {isStarted ? "pause" : "play"}
-          </button>
-        </div>
-        <div className="volumeWrapper">
-          volume
-          <input
-            className="volume"
-            type="range"
-            min="0"
-            step="0.1"
-            max="1"
-            value={currentVolume}
-            onChange={changeVolume}
-          />
-        </div>
-      </div>
       <div className="container">
         <header>
           {[
@@ -70,13 +30,6 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         <hr />
         <footer>
           <p>©2022 teranyan</p>
-          <p>
-            ©2006 Pokémon. ©1995-2006 Nintendo/Creatures Inc./GAME FREAK inc.
-          </p>
-          <p>
-            これは「Pokémon DP Sound
-            Library」の利用規約に同意し作成されたコンテンツです。
-          </p>
         </footer>
       </div>
       <style jsx global>{`

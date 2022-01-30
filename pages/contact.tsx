@@ -27,7 +27,7 @@ const Contact: NextPage = () => {
 
       <main>
         <section>
-          <h3>Portfolio</h3>
+          <h3>Activities</h3>
           <Link href={"https://github.com/tera-ny"}>
             <a target={"_blank"} rel="noreferrer noopener">
               Github @tera-ny
