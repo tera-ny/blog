@@ -126,6 +126,9 @@ const Index: NextPage = () => {
           display: grid;
           padding-top: 40px;
           grid-template-columns: repeat(auto-fit, 250px);
+          justify-content: center;
+          align-items: center;
+          width: 100%;
         }
 
         .portfolios > h2 {
