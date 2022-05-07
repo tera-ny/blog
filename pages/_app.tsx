@@ -32,7 +32,8 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           <p>©2022 teranyan</p>
         </footer>
       </div>
-      <style jsx global>{`
+      <style jsx global>
+        {`
         h1,
         h2,
         h3,
@@ -52,11 +53,13 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         p,
         html,
         body {
-          font-family: "Rubik", sans-serif;
+          font-family: "Rubik", "M PLUS Rounded 1c",sans-serif;
           margin: 0;
         }
-      `}</style>
-      <style jsx>{`
+      `}
+      </style>
+      <style jsx>
+        {`
         .player {
           display: flex;
           gap: 12px;
@@ -129,7 +132,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         .container {
           min-height: 100vh;
           display: grid;
-          grid-template-rows: 58px 1fr 1px auto;
+          grid-template-rows: 58px auto 1px 38px;
         }
         hr {
           margin: 0 28px;
@@ -164,7 +167,8 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
             margin: 0 12px;
           }
         }
-      `}</style>
+      `}
+      </style>
     </>
   );
 };

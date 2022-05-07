@@ -70,7 +70,8 @@ const Index: NextPage = () => {
           </section>
         </div>
       </main>
-      <style jsx>{`
+      <style jsx>
+        {`
         main {
           display: flex;
           flex-direction: column;
@@ -205,7 +206,8 @@ const Index: NextPage = () => {
             padding-left: 12px;
           }
         }
-      `}</style>
+      `}
+      </style>
     </>
   );
 };
