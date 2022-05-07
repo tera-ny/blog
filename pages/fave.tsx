@@ -8,6 +8,7 @@ const Page: NextPage = () => {
         <title>
           推し活
         </title>
+        <meta name={"description"} content={"最近いいなと思っているクリエイター。"} />
       </NextHead>
       <main>
         <h2>推し活</h2>
