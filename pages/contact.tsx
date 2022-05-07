@@ -53,7 +53,8 @@ const Contact: NextPage = () => {
           </Link>
         </section>
       </main>
-      <style jsx>{`
+      <style jsx>
+        {`
         main {
           display: flex;
           flex-direction: column;
@@ -88,7 +89,8 @@ const Contact: NextPage = () => {
         h3 {
           font-size: 24px;
         }
-      `}</style>
+      `}
+      </style>
     </>
   );
 };
