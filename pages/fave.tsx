@@ -13,10 +13,20 @@ const Page: NextPage = () => {
       <main>
         <h2>推し活</h2>
         <div>
-        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?list=PL3UyMWClxhTyk0CKmfP40BL46DMI-MZAb" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube-nocookie.com/embed/videoseries?list=PL3UyMWClxhTyk0CKmfP40BL46DMI-MZAb"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          >
+          </iframe>
         </div>
       </main>
-      <style jsx>{`
+      <style jsx>
+        {`
         main {
           width: 100%;
           display: flex;
@@ -36,7 +46,8 @@ const Page: NextPage = () => {
           width: 100%;
           height: 100%;
         }
-        `}</style>
+        `}
+      </style>
     </>
   );
 };
