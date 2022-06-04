@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import AnchorLink from "~/components/AnchorLink";
@@ -40,7 +39,7 @@ const Contact: NextPage = () => {
             Twitter @0x746572616e79
           </AnchorLink>
           <AnchorLink href="https://discord.com/invite/hXryf5PKAy">
-            Discord "Anchor" server @teranyan
+            Discord &quot;Anchor&quot; server @teranyan
           </AnchorLink>
         </section>
       </main>
