@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import AnchorLink from "~/components/AnchorLink";
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -28,29 +29,19 @@ const Contact: NextPage = () => {
       <main>
         <section>
           <h3>Activities</h3>
-          <Link href={"https://github.com/tera-ny"}>
-            <a target={"_blank"} rel="noreferrer noopener">
-              Github @tera-ny
-            </a>
-          </Link>
-          <Link href={"https://zenn.dev/tera_ny"}>
-            <a target={"_blank"} rel="noreferrer noopener">
-              Zenn @tera_ny
-            </a>
-          </Link>
+          <AnchorLink href="https://github.com/tera-ny">
+            Github @tera-ny
+          </AnchorLink>
+          <AnchorLink href="https://zenn.dev/tera_ny">Zenn @tera_ny</AnchorLink>
         </section>
         <section>
           <h3>SNS</h3>
-          <Link href={"https://twitter.com/0x746572616e79"}>
-            <a target={"_blank"} rel="noreferrer noopener">
-              Twitter @0x746572616e79
-            </a>
-          </Link>
-          <Link href={"https://discord.com/invite/hXryf5PKAy"}>
-            <a target={"_blank"} rel="noreferrer noopener">
-              Discord "Anchor" server @teranyan
-            </a>
-          </Link>
+          <AnchorLink href="https://discord.com/invite/hXryf5PKAy">
+            Twitter @0x746572616e79
+          </AnchorLink>
+          <AnchorLink href="https://discord.com/invite/hXryf5PKAy">
+            Discord "Anchor" server @teranyan
+          </AnchorLink>
         </section>
       </main>
       <style jsx>

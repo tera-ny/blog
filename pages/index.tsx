@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
+import AnchorLink from "~/components/AnchorLink";
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -52,20 +52,37 @@ const Index: NextPage = () => {
           </div>
         </div>
         <div className="portfolios">
-          <h2>Portfolio</h2>
+          <h2>Portfolio & Activity</h2>
           <section>
             <div className="portfolio">
-              <Link href={"https://www.ramblel.com/"}>
-                <a target={"_blank"} rel="noreferrer noopener">
-                  <Image
-                    src={"/images/uzu_homepage.png"}
-                    width={400}
-                    height={250}
-                    layout="responsive"
-                  />
-                  <h4>ramblel.com/</h4>
-                </a>
-              </Link>
+              <AnchorLink href="https://www.ramblel.com/">
+                <Image
+                  src={"/images/portfolio0.png"}
+                  width={400}
+                  height={250}
+                  layout="responsive"
+                />
+              </AnchorLink>
+            </div>
+            <div className="portfolio">
+              <AnchorLink href="https://zenn.dev/tera_ny">
+                <Image
+                  src={"/images/activity0.png"}
+                  width={600}
+                  height={315}
+                  layout="responsive"
+                />
+              </AnchorLink>
+            </div>
+            <div className="portfolio">
+              <AnchorLink href="https://github.com/tera-ny/Raspberry-Juice">
+                <Image
+                  src={"/images/portfolio1.png"}
+                  width={600}
+                  height={300}
+                  layout="responsive"
+                />
+              </AnchorLink>
             </div>
           </section>
         </div>
@@ -99,6 +116,8 @@ const Index: NextPage = () => {
           position: relative;
           width: 240px;
           aspect-ratio: 1/1;
+          border-radius: 50%;
+          overflow: hidden;
         }
         .secondary {
           display: flex;
@@ -119,17 +138,14 @@ const Index: NextPage = () => {
           padding-left: 20px;
         }
 
-        a {
-          color: black;
-        }
-
         .portfolios > section {
           display: grid;
           padding-top: 40px;
           grid-template-columns: repeat(auto-fit, 250px);
           justify-content: center;
-          align-items: center;
+          align-items: flex-start;
           width: 100%;
+          gap: 20px;
         }
 
         .portfolios > h2 {
