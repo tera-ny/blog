@@ -1,31 +1,19 @@
 import { AppProps } from "next/app";
 import { NextPage } from "next";
-import { Fragment } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Header from "~/components/Header";
+
+const contents = [{ title: "About Me", ref: "/" }, {
+  title: "Contact",
+  ref: "/contact",
+}];
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
-  const router = useRouter();
   return (
     <>
       <div className="container">
-        <header>
-          {[
-            { title: "About Me", ref: "/" },
-            { title: "Contact", ref: "/contact" },
-          ].map((item, index) => (
-            <Fragment key={index}>
-              {item.ref === router.pathname && <span>{item.title}</span>}
-              {item.ref !== router.pathname && (
-                <Link href={item.ref} passHref>
-                  <a>
-                    <span>{item.title}</span>
-                  </a>
-                </Link>
-              )}
-            </Fragment>
-          ))}
-        </header>
+        <Header
+          contents={contents}
+        />
         <Component {...pageProps} />
         <hr />
         <footer>
@@ -79,22 +67,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           padding: 12px;
           justify-content: space-around;
         }
-        header {
-          padding: 34px 54px 0;
-          display: flex;
-          gap: 28px;
-          font-size: 20px;
-        }
-        a {
-          color: #000000;
-        }
-        a:hover {
-          color: #f8ab38;
-        }
         @media (max-width: 700px) {
-          header {
-            padding: 20px 20px 12px;
-          }
           hr {
             margin: 0 12px;
           }

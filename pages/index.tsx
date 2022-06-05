@@ -30,7 +30,7 @@ const Index: NextPage = () => {
         <div className="container">
           <div className="primary">
             <div className="imageWrapper">
-              <Image src="/images/icon.png" layout="fill" />
+              <Image src="/images/icon.png" layout="fill" alt="icno" />
             </div>
             <h1>teranyan</h1>
             <p>Web front & iOS Engineer</p>
