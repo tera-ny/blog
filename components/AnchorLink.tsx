@@ -4,7 +4,11 @@ import Link from "next/link";
 interface Props {
   href: string;
 }
-
+/**
+ * 別タブで開くリンクコンポーネント
+ * @param href 対象のURL
+ * @param children クリック可能な内包するためのコンポーネント
+ */
 const AnchorLink: FC<PropsWithChildren<Props>> = ({ href, children }) => (
   <>
     <Link href={href} passHref>
