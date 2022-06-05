@@ -54,36 +54,39 @@ const Index: NextPage = () => {
         <div className="portfolios">
           <h2>Portfolio & Activity</h2>
           <section>
-            <div className="portfolio">
+            <article className="portfolio">
               <AnchorLink href="https://www.ramblel.com/">
                 <Image
                   src={"/images/portfolio0.png"}
                   width={400}
                   height={250}
                   layout="responsive"
+                  alt="ramblel.com"
                 />
               </AnchorLink>
-            </div>
-            <div className="portfolio">
-              <AnchorLink href="https://zenn.dev/tera_ny">
+            </article>
+            <article className="portfolio">
+              <AnchorLink href="https://zenn.dev/tera_ny/articles/fe2f6da2954e76">
                 <Image
                   src={"/images/activity0.png"}
                   width={600}
                   height={315}
                   layout="responsive"
+                  alt="GCPで完結する動画配信サービスの設計と実装"
                 />
               </AnchorLink>
-            </div>
-            <div className="portfolio">
+            </article>
+            <article className="portfolio">
               <AnchorLink href="https://github.com/tera-ny/Raspberry-Juice">
                 <Image
                   src={"/images/portfolio1.png"}
                   width={600}
                   height={300}
                   layout="responsive"
+                  alt="Raspberry Juice"
                 />
               </AnchorLink>
-            </div>
+            </article>
           </section>
         </div>
       </main>
