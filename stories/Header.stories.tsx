@@ -1,25 +1,23 @@
-import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import Header from "~/components/Header";
+import { globalStyleDecorator } from "~/decorators/globalStyleDecorator";
 
-import { Header } from "./Header";
+type Story = ComponentStoryObj<typeof Header>;
+type Meta = ComponentMeta<typeof Header>;
 
 export default {
-  title: "Example/Header",
   component: Header,
-  parameters: {
-    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "fullscreen",
+  decorators: [globalStyleDecorator],
+} as Meta;
+
+export const Default: Story = {
+  args: {
+    contents: [{ title: "Home", ref: "" }, { title: "Test", ref: "/test" }],
   },
-} as ComponentMeta<typeof Header>;
-
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
-
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
-  user: {
-    name: "Jane Doe",
+  parameters: {
+    nextRouter: {
+      pathname: "/test",
+      asPath: "/test",
+    },
   },
 };
-
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {};
