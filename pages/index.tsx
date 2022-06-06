@@ -102,11 +102,11 @@ const Index: NextPage = () => {
         }
         main > div {
           width: 100%;
-          max-width: 1600px;
+          max-width: 1200px;
         }
         .container {
-          display: flex;
-          justify-content: space-evenly;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           align-items: center;
         }
         .primary {
@@ -125,6 +125,7 @@ const Index: NextPage = () => {
         .secondary {
           display: flex;
           flex-direction: column;
+          justify-self: center;
           gap: 20px;
         }
         .secondary > section {
