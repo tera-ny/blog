@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import { NextPage } from "next";
 import Header from "~/components/Header";
 
-const contents = [{ title: "About Me", ref: "/" }, {
+const contents = [{ title: "About Me", ref: "/me" }, {
   title: "Contact",
   ref: "/contact",
 }];
@@ -43,6 +43,27 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         body {
           font-family: "Rubik", "M PLUS Rounded 1c",sans-serif;
           margin: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+          font-weight: 500;
+        }
+        h4 {
+          font-weight: 300;
+        }
+        h1 {
+          padding-top: 4px;
+          font-size: 24px;
+        }
+        h2 {
+          padding-top: 4px;
+          padding-bottom: 0;
+        }
+        p {
+          font-size: 14px;
+          color: #494949;
         }
       `}
       </style>

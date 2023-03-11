@@ -5,7 +5,7 @@ export const globalStyleDecorator: DecoratorFn = (Story) => (
     <Story />
     <style jsx global>
       {`
-        h1,
+      h1,
         h2,
         h3,
         h4,
@@ -26,6 +26,27 @@ export const globalStyleDecorator: DecoratorFn = (Story) => (
         body {
           font-family: "Rubik", "M PLUS Rounded 1c",sans-serif;
           margin: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+          font-weight: 500;
+        }
+        h4 {
+          font-weight: 300;
+        }
+        h1 {
+          padding-top: 4px;
+          font-size: 24px;
+        }
+        h2 {
+          padding-top: 4px;
+          padding-bottom: 0;
+        }
+        p {
+          font-size: 14px;
+          color: #494949;
         }
       `}
     </style>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import AnchorLink from "~/components/AnchorLink";
+import Profile from "~/components/Profile";
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -28,13 +29,7 @@ const Index: NextPage = () => {
       <main>
         <h2>Profile</h2>
         <div className="container">
-          <div className="primary">
-            <div className="imageWrapper">
-              <Image src="/images/icon.png" layout="fill" alt="icno" />
-            </div>
-            <h1>teranyan</h1>
-            <p>Web front & iOS Engineer</p>
-          </div>
+          <Profile />
           <div className="secondary">
             <h3>Skill-set</h3>
             <section>
@@ -97,7 +92,7 @@ const Index: NextPage = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 20px 12px;
+          padding: 40px 20px;
           gap: 80px;
         }
         main > div {
@@ -107,21 +102,9 @@ const Index: NextPage = () => {
         .container {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          align-items: center;
+          align-items: flex-start;
         }
-        .primary {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 12px;
-        }
-        .imageWrapper {
-          position: relative;
-          width: 240px;
-          aspect-ratio: 1/1;
-          border-radius: 50%;
-          overflow: hidden;
-        }
+        
         .secondary {
           display: flex;
           flex-direction: column;
@@ -170,26 +153,6 @@ const Index: NextPage = () => {
           font-weight: 300;
         }
 
-        h1,
-        h2,
-        h3 {
-          font-weight: 500;
-        }
-        h4 {
-          font-weight: 300;
-        }
-        h1 {
-          padding-top: 4px;
-          font-size: 24px;
-        }
-        h2 {
-          padding-top: 4px;
-          padding-bottom: 0;
-        }
-        p {
-          font-size: 14px;
-          color: #494949;
-        }
         @media (max-width: 700px) {
           .container {
             flex-direction: column;
@@ -200,15 +163,7 @@ const Index: NextPage = () => {
           main > * {
             max-width: 400px;
           }
-          .imageWrapper {
-            max-width: unset;
-            width: 100%;
-          }
-          .primary {
-            width: 100%;
-            justify-content: stretch;
-            align-items: stretch;
-          }
+  
           .secondary {
             width: 100%;
             padding-bottom: 20px;
