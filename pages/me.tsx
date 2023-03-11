@@ -3,6 +3,10 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import AnchorLink from "~/components/AnchorLink";
 import Profile from "~/components/Profile";
+import portfolio0 from "~/public/images/portfolio0.png";
+import activity0 from "~/public/images/activity0.png";
+import portfolio1 from "~/public/images/portfolio1.png";
+import portfolio2 from "~/public/images/portfolio2.png";
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -52,7 +56,7 @@ const Index: NextPage = () => {
             <article className="portfolio">
               <AnchorLink href="https://www.ramblel.com/">
                 <Image
-                  src={"/images/portfolio0.png"}
+                  src={portfolio0}
                   width={400}
                   height={250}
                   layout="responsive"
@@ -63,7 +67,7 @@ const Index: NextPage = () => {
             <article className="portfolio">
               <AnchorLink href="https://zenn.dev/tera_ny/articles/fe2f6da2954e76">
                 <Image
-                  src={"/images/activity0.png"}
+                  src={activity0}
                   width={600}
                   height={315}
                   layout="responsive"
@@ -74,11 +78,22 @@ const Index: NextPage = () => {
             <article className="portfolio">
               <AnchorLink href="https://github.com/tera-ny/Raspberry-Juice">
                 <Image
-                  src={"/images/portfolio1.png"}
+                  src={portfolio1}
                   width={600}
                   height={300}
                   layout="responsive"
                   alt="Raspberry Juice"
+                />
+              </AnchorLink>
+            </article>
+            <article className="portfolio">
+              <AnchorLink href="https://github.com/tera-ny/couscous">
+                <Image
+                  src={portfolio2}
+                  width={600}
+                  height={300}
+                  layout="responsive"
+                  alt="couscous"
                 />
               </AnchorLink>
             </article>
