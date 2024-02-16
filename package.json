@@ -5,10 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "format": "deno fmt components decorators pages stories"
+    "lint": "next lint"
   },
   "repository": "git@github.com:teranyan/homepage.git",
   "author": "teranyan <haru25haru02@gmail.com>",
@@ -23,21 +20,11 @@
     "styled-reset": "^4.5.2"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.16",
-    "@storybook/addon-interactions": "^7.6.16",
-    "@storybook/addon-links": "^7.6.16",
-    "@storybook/addon-onboarding": "^1.0.11",
-    "@storybook/blocks": "^7.6.16",
-    "@storybook/nextjs": "^7.6.16",
-    "@storybook/react": "^7.6.16",
-    "@storybook/test": "^7.6.16",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
-    "eslint-plugin-storybook": "^0.8.0",
-    "storybook": "^7.6.16",
     "typescript": "^5.3.3"
   },
   "volta": {
