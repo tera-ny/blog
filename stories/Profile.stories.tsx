@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Meta as StoryMeta, StoryObj } from "@storybook/react";
 import Profile from "~/components/Profile";
 import { globalStyleDecorator } from "~/decorators/globalStyleDecorator";
 
-type Story = ComponentStoryObj<typeof Profile>;
-type Meta = ComponentMeta<typeof Profile>;
+type Story = StoryObj<typeof Profile>;
+type Meta = StoryMeta<typeof Profile>;
 
 export default {
   component: Profile,

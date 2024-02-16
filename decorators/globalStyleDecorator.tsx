@@ -1,6 +1,6 @@
-import { DecoratorFn } from "@storybook/react";
+import { Decorator } from "@storybook/react";
 
-export const globalStyleDecorator: DecoratorFn = (Story) => (
+export const globalStyleDecorator: Decorator = (Story) => (
   <>
     <Story />
     <style jsx global>

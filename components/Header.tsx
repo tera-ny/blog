@@ -15,7 +15,7 @@ const Header: FC<Props> = ({ contents }) => {
           item.ref === router.pathname
             ? <span key={index}>{item.title}</span>
             : (
-              <Link key={index} href={item.ref} passHref>
+              <Link key={index} href={item.ref} passHref legacyBehavior>
                 <a>
                   <span>{item.title}</span>
                 </a>

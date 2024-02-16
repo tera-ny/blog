@@ -59,7 +59,6 @@ const Index: NextPage = () => {
                   src={portfolio0}
                   width={400}
                   height={250}
-                  layout="responsive"
                   alt="ramblel.com"
                 />
               </AnchorLink>
@@ -70,7 +69,6 @@ const Index: NextPage = () => {
                   src={activity0}
                   width={600}
                   height={315}
-                  layout="responsive"
                   alt="GCPで完結する動画配信サービスの設計と実装"
                 />
               </AnchorLink>
@@ -81,7 +79,6 @@ const Index: NextPage = () => {
                   src={portfolio1}
                   width={600}
                   height={300}
-                  layout="responsive"
                   alt="Raspberry Juice"
                 />
               </AnchorLink>
@@ -92,7 +89,6 @@ const Index: NextPage = () => {
                   src={portfolio2}
                   width={600}
                   height={300}
-                  layout="responsive"
                   alt="couscous"
                 />
               </AnchorLink>

@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta as StoryMeta, StoryFn } from "@storybook/react";
 import AnchorLink from "~/components/AnchorLink";
 import { globalStyleDecorator } from "~/decorators/globalStyleDecorator";
 
-type Story = ComponentStory<typeof AnchorLink>;
-type Meta = ComponentMeta<typeof AnchorLink>;
+type Story = StoryFn<typeof AnchorLink>;
+type Meta = StoryMeta<typeof AnchorLink>;
 
 export default {
   component: AnchorLink,

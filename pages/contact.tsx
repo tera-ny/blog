@@ -35,7 +35,7 @@ const Contact: NextPage = () => {
         </section>
         <section>
           <h3>SNS</h3>
-          <AnchorLink href="https://discord.com/invite/hXryf5PKAy">
+          <AnchorLink href="https://twitter.com/0x746572616e79">
             Twitter @0x746572616e79
           </AnchorLink>
           <AnchorLink href="https://discord.com/invite/hXryf5PKAy">
@@ -58,6 +58,7 @@ const Contact: NextPage = () => {
           flex-direction: column;
           align-items: center;
           gap: 40px;
+          padding: 0 8px;
         }
 
         section a {
