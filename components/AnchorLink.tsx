@@ -11,7 +11,7 @@ interface Props {
  */
 const AnchorLink: FC<PropsWithChildren<Props>> = ({ href, children }) => (
   <>
-    <Link href={href} passHref>
+    <Link href={href} legacyBehavior>
       <a target="_blank" rel="noreferrer noopener">{children}</a>
     </Link>
     <style jsx>

@@ -6,7 +6,7 @@ const Profile: FC = () => (
   <>
     <div className="container">
       <div className="imageWrapper">
-        <Image src={icon} layout="fill" alt="icon" width={240} height={240} />
+        <Image src={icon} layout="fill" alt="icon" />
       </div>
       <h1>teranyan</h1>
       <p>Web front & iOS Engineer</p>

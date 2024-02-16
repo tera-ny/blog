@@ -53,46 +53,38 @@ const Index: NextPage = () => {
         <div className="portfolios">
           <h2>Portfolio & Activity</h2>
           <section>
-            <article className="portfolio">
+            <article className="portfolio" style={{aspectRatio: "8 / 5"}}>
               <AnchorLink href="https://www.ramblel.com/">
                 <Image
                   src={portfolio0}
-                  width={400}
-                  height={250}
-                  layout="responsive"
+                  fill
                   alt="ramblel.com"
                 />
               </AnchorLink>
             </article>
-            <article className="portfolio">
+            <article className="portfolio" style={{aspectRatio: "2 / 1"}}>
               <AnchorLink href="https://zenn.dev/tera_ny/articles/fe2f6da2954e76">
                 <Image
                   src={activity0}
-                  width={600}
-                  height={315}
-                  layout="responsive"
+                  fill
                   alt="GCPで完結する動画配信サービスの設計と実装"
                 />
               </AnchorLink>
             </article>
-            <article className="portfolio">
+            <article className="portfolio" style={{aspectRatio: "2 / 1"}}>
               <AnchorLink href="https://github.com/tera-ny/Raspberry-Juice">
                 <Image
                   src={portfolio1}
-                  width={600}
-                  height={300}
-                  layout="responsive"
+                  fill
                   alt="Raspberry Juice"
                 />
               </AnchorLink>
             </article>
-            <article className="portfolio">
+            <article className="portfolio" style={{aspectRatio: "2 / 1"}}>
               <AnchorLink href="https://github.com/tera-ny/couscous">
                 <Image
                   src={portfolio2}
-                  width={600}
-                  height={300}
-                  layout="responsive"
+                  fill
                   alt="couscous"
                 />
               </AnchorLink>
@@ -156,6 +148,7 @@ const Index: NextPage = () => {
 
         .portfolio {
           background-color: white;
+          position: relative;
           padding: 8px;
           filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
         }

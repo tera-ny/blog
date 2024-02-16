@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import { NextPage } from "next";
 import Header from "~/components/Header";
 
-const contents = [{ title: "About Me", ref: "/me" }, {
+const contents = [{ title: "About Me", ref: "/" }, {
   title: "Contact",
   ref: "/contact",
 }];
