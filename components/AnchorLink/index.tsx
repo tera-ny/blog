@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import Link from "next/link";
+import * as styles from "./styles.css";
 
 interface Props {
   href: string;
@@ -10,24 +11,9 @@ interface Props {
  * @param children クリック可能な内包するためのコンポーネント
  */
 const AnchorLink: FC<PropsWithChildren<Props>> = ({ href, children }) => (
-  <>
-    <Link href={href} legacyBehavior>
-      <a target="_blank" rel="noreferrer noopener">
-        {children}
-      </a>
-    </Link>
-    <style jsx>
-      {`
-        a {
-          color: #000000;
-          font-size: 18px;
-        }
-        a:hover {
-          color: #f8ab38;
-        }
-      `}
-    </style>
-  </>
+  <Link href={href} className={styles.link} target="_blank" rel="noreferrer noopener">
+    {children}
+  </Link>
 );
 
 export default AnchorLink;
