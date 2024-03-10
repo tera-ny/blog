@@ -56,3 +56,7 @@ globalStyle("p", {
   fontSize: "14px",
   color: "#494949"
 });
+
+globalStyle("img", {
+  verticalAlign: "middle"
+});
