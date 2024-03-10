@@ -15,18 +15,18 @@ export const Template = () => {
       <div className={styles.container}>
         <Profile />
         <div className={styles.secondary}>
+          <p>iOSアプリメインで時々Webフロントエンドを書いています。デザインも少し。</p>
           <h3 className={styles.subTitle}>Skill-set</h3>
           <section className={styles.section}>
             <h4>languages:</h4>
-            <p>Swift, Typescript, Python</p>
+            <p>Swift, Typescript, Javascript, Python, Ruby</p>
           </section>
           <section className={styles.section}>
-            <h4>tools,libraries:</h4>
-            <p>Swift UI, RxSwift, React.js, Next.js, Django, MySQL</p>
-          </section>
-          <section className={styles.section}>
-            <h4>others:</h4>
-            <p>Firebase, Google Cloud Platform, Vercel, Git, Github, figma</p>
+            <h4>keywords:</h4>
+            <p>
+              Swift UI, UIKit, RxSwift, React.js, Next.js, qwik, vanilla-extract, Django, FastAPI,
+              Ruby on Rails, AWS, GCP
+            </p>
           </section>
         </div>
       </div>

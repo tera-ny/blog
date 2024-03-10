@@ -5,8 +5,14 @@ export const main = style({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  padding: "40px 20px",
-  gap: "80px"
+  padding: "40px 80px",
+  gap: "80px",
+  "@media": {
+    "(max-width: 700px)": {
+      padding: "12px 20px",
+      gap: "40px"
+    }
+  }
 });
 
 export const container = style({
@@ -14,13 +20,14 @@ export const container = style({
   maxWidth: "1200px",
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  alignItems: "flex-start",
+  gridTemplateRows: "auto",
+  alignItems: "center",
+  gap: "20px",
   "@media": {
     "(max-width: 700px)": {
-      flexDirection: "column",
-      gap: "32px",
-      padding: "0 12px",
-      textAlign: "center"
+      gridTemplateColumns: "auto",
+      gridTemplateRows: "auto auto",
+      gap: 0
     }
   }
 });
@@ -32,9 +39,9 @@ export const secondary = style({
   gap: "20px",
   "@media": {
     "(max-width: 700px)": {
+      padding: "20px 0",
       width: "100%",
-      paddingBottom: "20px",
-      gap: "32px"
+      gap: "16px"
     }
   }
 });
@@ -45,8 +52,7 @@ export const section = style({
   gap: "8px",
   "@media": {
     "(max-width: 700px)": {
-      fontWeight: 300,
-      padding: "0 12px"
+      fontWeight: 300
     }
   }
 });

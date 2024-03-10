@@ -5,11 +5,9 @@ import * as styles from "./styles.css";
 
 const Profile: FC = () => (
   <div className={styles.container}>
-    <div className={styles.imageWrapper}>
-      <Image src={icon} layout="fill" alt="icon" />
-    </div>
+    <Image className={styles.image} src={icon} width={180} height={180} alt="icon" />
     <h1>haruta🐏</h1>
-    <p>Web frontend & iOS Engineer</p>
+    <p>Web frontend & iOS Application Engineer</p>
   </div>
 );
 

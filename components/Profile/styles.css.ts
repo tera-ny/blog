@@ -7,11 +7,7 @@ export const container = style({
   gap: "12px"
 });
 
-export const imageWrapper = style({
-  position: "relative",
-  maxWidth: "240px",
-  width: "100%",
-  aspectRatio: "1/1",
+export const image = style({
   borderRadius: "50%",
   overflow: "hidden"
 });
