@@ -18,7 +18,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
       <Component {...pageProps} />
       <hr className={styles.hr} />
       <footer className={styles.footer}>
-        <p>©2022 teranyan</p>
+        <p>©2024 teranyan</p>
       </footer>
     </div>
   );
