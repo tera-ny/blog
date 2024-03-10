@@ -12,8 +12,8 @@ export const Template = () => {
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>SNS</h3>
         <AnchorLink href="https://twitter.com/0x746572616e79">Twitter @0x746572616e79</AnchorLink>
-        <AnchorLink href="https://discord.com/invite/hXryf5PKAy">
-          Discord &quot;Anchor&quot; server @teranyan
+        <AnchorLink href="https://instagram.com/0x746572616e79">
+          Instagram @0x746572616e79
         </AnchorLink>
       </section>
     </main>
