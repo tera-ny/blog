@@ -12,7 +12,6 @@ import * as styles from "./styles.css";
 export const Template = () => {
   return (
     <main className={styles.main}>
-      <h2 className={styles.title}>Profile</h2>
       <div className={styles.container}>
         <Profile />
         <div className={styles.secondary}>
