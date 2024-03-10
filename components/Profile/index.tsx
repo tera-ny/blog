@@ -9,7 +9,7 @@ const Profile: FC = () => (
       <Image src={icon} layout="fill" alt="icon" />
     </div>
     <h1>haruta🐏</h1>
-    <p>Web front & iOS Engineer</p>
+    <p>Web frontend & iOS Engineer</p>
   </div>
 );
 
