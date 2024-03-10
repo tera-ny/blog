@@ -35,8 +35,8 @@ export const Template = () => {
         <h2 className={styles.title}>Portfolio & Activity</h2>
         <section className={styles.portfolios}>
           <article className={styles.portfolio}>
-            <AnchorLink href="https://www.ramblel.com/">
-              <Image src={portfolio0} alt="ramblel.com" width={234} height={146.25} />
+            <AnchorLink href="https://ramblel.vercel.app">
+              <Image src={portfolio0} alt="ramblel.vercel.app" width={234} height={146.25} />
             </AnchorLink>
           </article>
           <article className={styles.portfolio}>
