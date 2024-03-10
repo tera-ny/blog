@@ -11,38 +11,38 @@ const Header: FC<Props> = ({ contents }) => {
   return (
     <>
       <header>
-        {contents.map((item, index) => (
-          item.ref === router.pathname
-            ? <span key={index}>{item.title}</span>
-            : (
-              <Link key={index} href={item.ref} passHref legacyBehavior>
-                <a>
-                  <span>{item.title}</span>
-                </a>
-              </Link>
-            )
-        ))}
+        {contents.map((item, index) =>
+          item.ref === router.pathname ? (
+            <span key={index}>{item.title}</span>
+          ) : (
+            <Link key={index} href={item.ref} passHref legacyBehavior>
+              <a>
+                <span>{item.title}</span>
+              </a>
+            </Link>
+          )
+        )}
       </header>
       <style jsx>
         {`
-        header {
-          padding: 34px 54px 0;
-          display: flex;
-          gap: 28px;
-          font-size: 20px;
-        }
-        a {
-          color: #000000;
-        }
-        a:hover {
-          color: #f8ab38;
-        }
-        @media (max-width: 700px) {
           header {
-            padding: 20px 20px 12px;
+            padding: 34px 54px 0;
+            display: flex;
+            gap: 28px;
+            font-size: 20px;
           }
-        }
-    `}
+          a {
+            color: #000000;
+          }
+          a:hover {
+            color: #f8ab38;
+          }
+          @media (max-width: 700px) {
+            header {
+              padding: 20px 20px 12px;
+            }
+          }
+        `}
       </style>
     </>
   );

@@ -12,18 +12,20 @@ interface Props {
 const AnchorLink: FC<PropsWithChildren<Props>> = ({ href, children }) => (
   <>
     <Link href={href} legacyBehavior>
-      <a target="_blank" rel="noreferrer noopener">{children}</a>
+      <a target="_blank" rel="noreferrer noopener">
+        {children}
+      </a>
     </Link>
     <style jsx>
       {`
-  a {
-    color: #000000;
-    font-size: 18px;
-  }
-  a:hover {
-    color: #f8ab38;
-  }
-  `}
+        a {
+          color: #000000;
+          font-size: 18px;
+        }
+        a:hover {
+          color: #f8ab38;
+        }
+      `}
     </style>
   </>
 );

@@ -27,7 +27,7 @@ const Profile: FC = () => (
           border-radius: 50%;
           overflow: hidden;
         }
-    `}
+      `}
     </style>
   </>
 );
