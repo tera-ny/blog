@@ -8,7 +8,7 @@ const Profile: FC = () => (
     <div className={styles.imageWrapper}>
       <Image src={icon} layout="fill" alt="icon" />
     </div>
-    <h1>teranyan</h1>
+    <h1>haruta🐏</h1>
     <p>Web front & iOS Engineer</p>
   </div>
 );
