@@ -1,4 +1,4 @@
-import {style} from "@vanilla-extract/css"
+import { style } from "@vanilla-extract/css";
 
 export const link = style({
   color: "#000000",
@@ -8,4 +8,4 @@ export const link = style({
       color: "#f8ab38"
     }
   }
-})
+});

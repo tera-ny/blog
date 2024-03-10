@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css"
+import { style } from "@vanilla-extract/css";
 
 export const header = style({
   padding: "34px 54px 0",
@@ -10,7 +10,7 @@ export const header = style({
       padding: "20px 20px 12px"
     }
   }
-})
+});
 
 export const link = style({
   color: "#000000",
@@ -19,4 +19,4 @@ export const link = style({
       color: "#f8ab38"
     }
   }
-})
+});
