@@ -1,7 +1,7 @@
 import AnchorLink from "~/components/anchor-link";
 import * as styles from "./styles.css";
 import { component$ } from "@builder.io/qwik";
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
@@ -23,11 +23,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "teranyan's homepage / contact",
+  title: "haruta's homepage / contact",
   meta: [
     {
       property: "og:title",
-      content: "teranyan's homepage / contact",
+      content: "haruta's homepage / contact",
     },
     {
       property: "og:description",
