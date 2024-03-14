@@ -7,7 +7,6 @@ import portfolio1 from "~/medias/portfolio1.webp"
 import portfolio2 from "~/medias/portfolio2.webp"
 import activity0 from "~/medias/activity0.webp"
 import icon from "~/medias/icon.webp"
-import ogpIcon from "~/medias/ogp-icon.webp"
 
 import * as styles from "./styles.css";
 
@@ -91,7 +90,7 @@ export const head: DocumentHead = {
     },
     {
       property: "og:image",
-      content: ogpIcon,
+      content: "https://teranyan.me/ogp-icon.webp",
     },
     {
       name: "twitter:card",
