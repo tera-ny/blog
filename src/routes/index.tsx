@@ -2,12 +2,12 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import AnchorLink from "~/components/anchor-link";
 
-import portfolio0 from "~/medias/portfolio0.png"
-import portfolio1 from "~/medias/portfolio1.png"
-import portfolio2 from "~/medias/portfolio2.png"
-import activity0 from "~/medias/activity0.png"
-import icon from "~/medias/icon.png"
-import ogpIcon from "~/medias/ogp-icon.png"
+import portfolio0 from "~/medias/portfolio0.webp"
+import portfolio1 from "~/medias/portfolio1.webp"
+import portfolio2 from "~/medias/portfolio2.webp"
+import activity0 from "~/medias/activity0.webp"
+import icon from "~/medias/icon.webp"
+import ogpIcon from "~/medias/ogp-icon.webp"
 
 import * as styles from "./styles.css";
 
