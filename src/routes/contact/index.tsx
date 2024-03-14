@@ -1,6 +1,7 @@
 import AnchorLink from "~/components/anchor-link";
 import * as styles from "./styles.css";
 import { component$ } from "@builder.io/qwik";
+import { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
@@ -20,3 +21,37 @@ export default component$(() => {
     </main>
   );
 });
+
+export const head: DocumentHead = {
+  title: "teranyan's homepage / contact",
+  meta: [
+    {
+      property: "og:title",
+      content: "teranyan's homepage / contact",
+    },
+    {
+      property: "og:description",
+      content: "🐏",
+    },
+    {
+      property: "og:locale",
+      content: "ja",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    {
+      property: "og:image",
+      content: "https://teranyan.tokyo/images/ogp-icon.png",
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:site",
+      content: "@0x746572616e79",
+    },
+  ],
+};
