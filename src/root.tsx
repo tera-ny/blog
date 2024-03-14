@@ -11,6 +11,7 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="manifest" href="/manifest.json" />
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap"
