@@ -1,5 +1,4 @@
 import AnchorLink from "~/components/AnchorLink";
-import Image from "next/image";
 import Profile from "~/components/Profile";
 
 import portfolio0 from "~/public/images/portfolio0.png";
@@ -35,13 +34,13 @@ export const Template = () => {
         <section className={styles.portfolios}>
           <article className={styles.portfolio}>
             <AnchorLink href="https://ramblel.vercel.app">
-              <Image src={portfolio0} alt="ramblel.vercel.app" width={234} height={146.25} />
+              <img src={portfolio0.src} alt="ramblel.vercel.app" width={234} height={146.25} />
             </AnchorLink>
           </article>
           <article className={styles.portfolio}>
             <AnchorLink href="https://zenn.dev/tera_ny/articles/fe2f6da2954e76">
-              <Image
-                src={activity0}
+              <img
+                src={activity0.src}
                 alt="GCPで完結する動画配信サービスの設計と実装"
                 width={234}
                 height={117}
@@ -50,12 +49,12 @@ export const Template = () => {
           </article>
           <article className={styles.portfolio}>
             <AnchorLink href="https://github.com/tera-ny/Raspberry-Juice">
-              <Image src={portfolio1} alt="Raspberry Juice" width={234} height={117} />
+              <img src={portfolio1.src} alt="Raspberry Juice" width={234} height={117} />
             </AnchorLink>
           </article>
           <article className={styles.portfolio}>
             <AnchorLink href="https://github.com/tera-ny/couscous">
-              <Image src={portfolio2} alt="couscous" width={234} height={117} />
+              <img src={portfolio2.src} alt="couscous" width={234} height={117} />
             </AnchorLink>
           </article>
         </section>
