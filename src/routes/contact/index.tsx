@@ -43,7 +43,7 @@ export const head: DocumentHead = {
     },
     {
       property: "og:image",
-      content: "https://teranyan.me/ogp-icon.webp",
+      content: "https://teranyan.me/ogp-icon.jpg",
     },
     {
       name: "twitter:card",
