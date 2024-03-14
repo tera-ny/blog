@@ -94,7 +94,7 @@ export const head: DocumentHead = {
     },
     {
       name: "twitter:card",
-      content: "summary_large_image",
+      content: "summary",
     },
     {
       name: "twitter:site",
