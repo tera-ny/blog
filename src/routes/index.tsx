@@ -70,11 +70,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "haruta's homepage",
+  title: "haruta - teranyan.me",
   meta: [
     {
       property: "og:title",
-      content: "haruta's homepage",
+      content: "haruta - teranyan.me",
     },
     {
       property: "og:description",
