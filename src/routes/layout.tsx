@@ -1,6 +1,6 @@
 import { component$, Slot} from "@builder.io/qwik";
 
-import Header from "./_components/header";
+import Header from "~/components/header";
 
 import * as styles from "./layout.css";
 
