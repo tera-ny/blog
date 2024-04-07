@@ -18,7 +18,7 @@ export default component$(() => {
       <img class={styles.image} src={icon} width={180} height={180} alt="icon" />
       <h1>haruta🐏</h1>
       <p>Web frontend & iOS Application Engineer</p>
-      <p>Cookpad Inc. 2019/06~</p>
+      <p>Cookpad Inc. 2024/04~</p>
     </div>
       <div class={styles.secondary}>
         <p>iOSアプリメインで時々Webフロントエンドを書いています。デザインも少し。</p>
