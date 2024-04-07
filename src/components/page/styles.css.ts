@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { style } from "styled-vanilla-extract/qwik";
 
 export const main = style({
   display: "flex",
@@ -6,11 +6,11 @@ export const main = style({
   justifyContent: "center",
   alignItems: "center",
   padding: "40px 80px",
-  gap: "80px",
+  gap: "40px",
   "@media": {
     "(max-width: 700px)": {
       padding: "12px 20px",
-      gap: "40px"
+      gap: "32px"
     }
   }
 });
@@ -59,7 +59,7 @@ export const secondary = style({
   }
 });
 
-export const section = style({
+export const secondaryItems = style({
   display: "flex",
   flexDirection: "column",
   gap: "8px",
@@ -70,12 +70,22 @@ export const section = style({
   }
 });
 
-export const portfolioContainer = style({
+export const section = style({
   width: "100%",
   maxWidth: "1200px"
 });
 
+export const histories = style({
+  margin: "20px auto",
+  width: "fit-content",
+})
+
+export const history = style({
+  padding: "8px 0",
+});
+
 export const portfolios = style({
+  width: "100%",
   paddingTop: "40px",
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, 250px)",

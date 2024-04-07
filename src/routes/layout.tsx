@@ -2,7 +2,7 @@ import { component$, Slot} from "@builder.io/qwik";
 
 import Header from "~/components/header";
 
-import * as styles from "./layout.css";
+import * as styles from "~/components/page/layout.css";
 
 const contents = [
   { title: "About Me", ref: "/" },

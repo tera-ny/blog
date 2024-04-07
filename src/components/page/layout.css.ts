@@ -1,4 +1,5 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "styled-vanilla-extract/qwik";
+import { globalStyle } from "@vanilla-extract/css";
 
 export const container = style({
   minHeight: "100vh",

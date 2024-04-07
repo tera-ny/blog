@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { style } from "styled-vanilla-extract/qwik";
 
 export const header = style({
   padding: "34px 54px 0",
