@@ -53,7 +53,7 @@ globalStyle("h2", {
   paddingBottom: 0
 });
 
-globalStyle("p", {
+globalStyle("p, li", {
   fontSize: "14px",
   color: "#494949"
 });

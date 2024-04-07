@@ -39,7 +39,7 @@ export default component$(() => {
       <section class={styles.section}>
         <h2 class={styles.title}>History</h2>
         <ul class={styles.histories}>
-          <li class={styles.history}>2024/04~: Cookpad ing. Software engineer</li>
+          <li class={styles.history}>2024/04~: Cookpad Inc. Software engineer</li>
           <li class={styles.history}>2019/06~2024/03: Cookpad Inc. Software engineering interns</li>
           <li class={styles.history}>2019/04~2024/03: Faculty of Information Networking for Innovation and Design, Toyo University</li>
         </ul>
