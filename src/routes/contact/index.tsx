@@ -18,6 +18,12 @@ export default component$(() => {
           Instagram @0x746572616e79
         </AnchorLink>
       </section>
+      <section class={styles.section}>
+        <h3 class={styles.sectionTitle}>Other</h3>
+        <AnchorLink href="mailto:contact@teranyan.me">
+          contact@teranyan.me
+        </AnchorLink>
+      </section>
     </main>
   );
 });
