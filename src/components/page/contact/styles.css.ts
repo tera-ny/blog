@@ -5,15 +5,15 @@ export const main = style({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  gap: "80px"
+  gap: "80px",
+  padding: "20px 12px 32px"
 });
 
 export const section = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  gap: "40px",
-  padding: "0 8px"
+  gap: "40px"
 });
 
 export const sectionTitle = style({
